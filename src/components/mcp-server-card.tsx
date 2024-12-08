@@ -12,7 +12,7 @@ type MCPServerConfig = {
 type MCPServerCardProps = {
 	serverName: string
 	config: MCPServerConfig
-	icon?: React.ReactNode
+	icon?: string
 	variables?: {
 		name: string
 		value: string
@@ -42,7 +42,7 @@ export function MCPServerCard({
 	const handleVariableChange = (
 		name: string,
 		value: string,
-		argIndex: number
+		_argIndex: number
 	) => {
 		setValues((prev) => ({ ...prev, [name]: value }))
 
@@ -67,6 +67,9 @@ export function MCPServerCard({
 		SERVER_CONFIGS[serverName as keyof typeof SERVER_CONFIGS]
 	const hasTerminalCommand = Boolean(serverConfig?.terminalCommand)
 
+	// Get the server config at the start of the component
+	const iconUrl = icon || serverConfig?.icon // Use the prop or fallback to config
+
 	return (
 		<div className="join join-vertical w-full">
 			<div className="collapse collapse-arrow join-item border border-base-300 bg-white p-4">
@@ -74,7 +77,17 @@ export function MCPServerCard({
 				<div className="collapse-title">
 					<div className="flex items-center">
 						<div className="flex items-center gap-2">
-							{icon}
+							{iconUrl && (
+								<img
+									src={iconUrl}
+									alt={`${serverName} icon`}
+									className="w-20 h-12 object-contain"
+									onError={(e) => {
+										// Fallback if image fails to load
+										e.currentTarget.style.display = "none"
+									}}
+								/>
+							)}
 							<h3 className="text-lg capitalize">{serverName}</h3>
 						</div>
 					</div>

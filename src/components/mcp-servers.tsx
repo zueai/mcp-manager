@@ -123,11 +123,15 @@ export function MCPServers({
 								}}
 							>
 								<div className="my-auto">
-									{
-										SERVER_CONFIGS[
-											serverType as keyof typeof SERVER_CONFIGS
-										].icon
-									}
+									<img
+										src={
+											SERVER_CONFIGS[
+												serverType as keyof typeof SERVER_CONFIGS
+											].icon
+										}
+										alt={`${serverType} icon`}
+										className="w-12 h-12 object-contain"
+									/>
 								</div>
 								<div className="flex flex-col text-left">
 									<span className="text-xl font-normal mb-1">

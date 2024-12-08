@@ -7,7 +7,10 @@ import { useState } from "react"
 
 function App() {
 	const [jsonContent, setJsonContent] = useState<{
-		mcpServers: Record<string, { command: string; args: string[] }>
+		mcpServers: Record<
+			string,
+			{ command: string; args: string[]; env?: Record<string, string> }
+		>
 	}>({
 		mcpServers: {}
 	})
@@ -35,17 +38,20 @@ function App() {
 		if (serverConfig.terminalCommand) {
 			setTerminalServers((prev) => [...prev, serverType])
 		} else {
-			const updatedContent = {
+			// Ensure we only add servers with required properties
+			const newServer = {
+				command: serverConfig.command as string,
+				args: serverConfig.args as string[],
+				...(serverConfig.env && { env: serverConfig.env })
+			}
+
+			setJsonContent({
 				...jsonContent,
 				mcpServers: {
 					...jsonContent.mcpServers,
-					[serverType]: {
-						command: "mcp",
-						args: [serverType]
-					}
+					[serverType]: newServer
 				}
-			}
-			setJsonContent(updatedContent)
+			})
 		}
 	}
 
