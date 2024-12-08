@@ -1,4 +1,4 @@
-import { CheckCircle2, Copy, Upload, XCircle } from "lucide-react"
+import { CheckCircle2, Copy, Save, Upload, XCircle } from "lucide-react"
 import type React from "react"
 import { useState } from "react"
 
@@ -42,6 +42,23 @@ function App() {
 		}
 	}
 
+	const handleSaveAs = async () => {
+		try {
+			const jsonString = JSON.stringify(jsonContent, null, 2)
+			const blob = new Blob([jsonString], { type: "application/json" })
+			const url = window.URL.createObjectURL(blob)
+			const link = document.createElement("a")
+			link.href = url
+			link.download = "claude_desktop_config.json"
+			document.body.appendChild(link)
+			link.click()
+			document.body.removeChild(link)
+			window.URL.revokeObjectURL(url)
+		} catch (error) {
+			console.error("Error saving file:", error)
+		}
+	}
+
 	return (
 		<div className="container mx-auto p-4 max-w-3xl">
 			<h1 className="text-3xl font-bold text-center mb-8">
@@ -55,7 +72,7 @@ function App() {
 					<div className="space-y-6">
 						<div>
 							<h3 className="text-lg font-medium mb-2">
-								Step 1: Copy Claude Desktop Config File's Path
+								Step 1: Click the Copy button below.
 							</h3>
 							<div className="bg-base-200 rounded-lg p-4 mb-4">
 								<p className="font-mono text-sm mb-2">
@@ -83,10 +100,18 @@ function App() {
 								Step 2: Upload Config File
 							</h3>
 							<p>
-								Press <kbd className="kbd kbd-sm">⌘</kbd> +{" "}
+								1) Click Choose File
+								<br />
+								2) Press <kbd className="kbd kbd-sm">⌘</kbd> +{" "}
 								<kbd className="kbd kbd-sm">⇧</kbd> +{" "}
-								<kbd className="kbd kbd-sm">G</kbd> in Finder,
-								then paste this path to select the config file.
+								<kbd className="kbd kbd-sm">G</kbd> in Finder to
+								open the "Go to Folder" dialog.
+								<br />
+								3) Paste the path you just copied to select the
+								config file.
+								<br />
+								4) Select the config file and click Open to
+								upload it.
 							</p>
 							<div className="form-control w-full max-w-md mb-2">
 								<input
@@ -127,6 +152,16 @@ function App() {
 
 				{Object.keys(jsonContent).length > 0 && (
 					<div className="bg-base-200 rounded-lg p-4">
+						<div className="flex justify-end mb-2">
+							<button
+								type="button"
+								onClick={handleSaveAs}
+								className="btn btn-primary btn-sm"
+							>
+								<Save className="w-4 h-4" />
+								<span className="ml-2">Save As</span>
+							</button>
+						</div>
 						<pre className="whitespace-pre-wrap font-mono text-sm">
 							{JSON.stringify(jsonContent, null, 2)}
 						</pre>
