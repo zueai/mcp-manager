@@ -1,4 +1,4 @@
-import { Plus, Save } from "lucide-react"
+import { Plus, Save, X } from "lucide-react"
 import { useState } from "react"
 import { CloudflareIcon } from "./icons"
 import { MCPServerCard } from "./mcp-server-card"
@@ -60,6 +60,24 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 		onUpdate(updatedContent)
 	}
 
+	const handleAddServer = (serverType: keyof typeof SERVER_CONFIGS) => {
+		const newServer = {
+			command: "mcp",
+			args: ["cloudflare"]
+		}
+
+		const updatedContent = {
+			...jsonContent,
+			mcpServers: {
+				...jsonContent.mcpServers,
+				[serverType]: newServer
+			}
+		}
+
+		setHasChanges(true)
+		onUpdate(updatedContent)
+	}
+
 	const hasServers = Object.keys(jsonContent.mcpServers).length > 0
 
 	return (
@@ -67,9 +85,19 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 			<div className="flex justify-between items-center mb-8">
 				<div className="flex items-center gap-4">
 					<h2 className="text-2xl text-center">Your MCP Servers</h2>
-					<button type="button" className="btn btn-primary btn-sm">
+					<button
+						type="button"
+						className="btn btn-primary btn-sm"
+						onClick={() =>
+							(
+								document.getElementById(
+									"add_server_modal"
+								) as HTMLDialogElement
+							)?.showModal()
+						}
+					>
 						<Plus className="w-4 h-4" />
-						<span className="ml-2">Add Server</span>
+						<span>Add Server</span>
 					</button>
 				</div>
 				{hasChanges && (
@@ -83,6 +111,57 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 					</button>
 				)}
 			</div>
+
+			<dialog id="add_server_modal" className="modal backdrop-blur-sm">
+				<div className="modal-box">
+					<div className="flex justify-between items-center mb-4">
+						<h3 className="font-bold text-lg">Add New Server</h3>
+						<button
+							type="button"
+							className="btn btn-sm btn-ghost"
+							onClick={() =>
+								(
+									document.getElementById(
+										"add_server_modal"
+									) as HTMLDialogElement
+								)?.close()
+							}
+						>
+							<X className="w-4 h-4" />
+						</button>
+					</div>
+
+					<div className="grid gap-4 py-4">
+						{Object.keys(SERVER_CONFIGS).map((serverType) => (
+							<button
+								key={serverType}
+								type="button"
+								className="btn btn-secondary hover:bg-secondary/105 hover:text-secondary-content w-full flex justify-start gap-4"
+								onClick={() => {
+									handleAddServer(
+										serverType as keyof typeof SERVER_CONFIGS
+									)
+									;(
+										document.getElementById(
+											"add_server_modal"
+										) as HTMLDialogElement
+									)?.close()
+								}}
+							>
+								{
+									SERVER_CONFIGS[
+										serverType as keyof typeof SERVER_CONFIGS
+									].icon
+								}
+								<span className="capitalize">{serverType}</span>
+							</button>
+						))}
+					</div>
+				</div>
+				<form method="dialog" className="modal-backdrop">
+					<button type="button">close</button>
+				</form>
+			</dialog>
 
 			<div className="space-y-4">
 				{hasServers ? (

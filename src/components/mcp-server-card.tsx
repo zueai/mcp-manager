@@ -1,6 +1,10 @@
 import { Save, Trash2 } from "lucide-react"
 import { useState } from "react"
 
+const capitalizeFirstLetter = (str: string): string => {
+	return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 type MCPServerConfig = {
 	command: string
 	args: string[]
@@ -67,7 +71,7 @@ export function MCPServerCard({
 					<div className="flex items-center">
 						<div className="flex items-center gap-2">
 							{icon}
-							<h3 className="text-lg font-semibold capitalize">
+							<h3 className="text-lg font-sans font-semibold capitalize">
 								{serverName}
 							</h3>
 						</div>
@@ -86,7 +90,7 @@ export function MCPServerCard({
 											className="label"
 											htmlFor={`${serverName}-${variable.name}`}
 										>
-											<span className="label-text capitalize">
+											<span className="label-text">
 												{variable.name}
 											</span>
 										</label>
@@ -102,7 +106,7 @@ export function MCPServerCard({
 												)
 											}
 											className="input input-bordered w-full"
-											placeholder={`Enter ${serverName} ${variable.name}`}
+											placeholder={`Enter ${capitalizeFirstLetter(serverName)} ${variable.name}`}
 										/>
 									</div>
 								))}
