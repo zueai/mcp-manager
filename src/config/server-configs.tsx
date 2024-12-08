@@ -43,7 +43,6 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 			}
 		],
 		terminalCommand: "npx @cloudflare/mcp-server-cloudflare init",
-		docsUrl:
-			"https://developers.cloudflare.com/cloudflare-one/mcp/cloudflare-server"
+		docsUrl: "https://github.com/cloudflare/mcp-server-cloudflare"
 	}
 }

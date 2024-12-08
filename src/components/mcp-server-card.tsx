@@ -1,6 +1,7 @@
+import { TerminalCommand } from "@/components/terminal-command"
 import { SERVER_CONFIGS } from "@/config/server-configs"
 import { capitalizeFirstLetter } from "@/utils"
-import { Trash2 } from "lucide-react"
+import { ArrowUpRight, Trash2 } from "lucide-react"
 import { useState } from "react"
 
 type MCPServerConfig = {
@@ -80,15 +81,15 @@ export function MCPServerCard({
 				</div>
 				<div className="collapse-content">
 					{hasTerminalCommand ? (
-						<div className="bg-base-200 rounded-lg p-4">
+						<div className="bg-base-200 rounded-lg p-4 space-y-4">
 							<p className="text-sm text-gray-600">
 								MCP Manager can't update this server directly,
-								please run the{" "}
-								<code className="font-mono">
-									{serverConfig?.terminalCommand}
-								</code>{" "}
-								command below to add/modify this server.
+								please run this terminal command to modify this
+								server.
 							</p>
+							<TerminalCommand
+								command={serverConfig?.terminalCommand}
+							/>
 						</div>
 					) : (
 						variables && (
@@ -128,15 +129,29 @@ export function MCPServerCard({
 						)
 					)}
 				</div>
-				<div className="flex gap-2 mb-4 mr-4 justify-end">
-					<button
-						type="button"
-						onClick={handleDelete}
-						className="btn btn-sm bg-red-100 hover:bg-red-200"
-					>
-						<Trash2 className="w-4 h-4" />
-						<span>Delete</span>
-					</button>
+				<div className="flex justify-end">
+					<div className="flex gap-2 mb-4 mr-2">
+						<button
+							type="button"
+							onClick={() =>
+								window.open(serverConfig?.docsUrl, "_blank")
+							}
+							className="btn btn-sm btn-outline"
+						>
+							<ArrowUpRight className="w-4 h-4" />
+							<span>Docs</span>
+						</button>
+					</div>
+					<div className="flex gap-2 mb-4 mr-4 justify-end">
+						<button
+							type="button"
+							onClick={handleDelete}
+							className="btn btn-sm bg-red-100 hover:bg-red-200"
+						>
+							<Trash2 className="w-4 h-4" />
+							<span>Delete</span>
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

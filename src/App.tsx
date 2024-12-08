@@ -185,9 +185,9 @@ function App() {
 										<div className="bg-base-200 rounded-lg p-4">
 											<div>
 												<h3 className="text-md font-tiempos-regular mb-4">
-													Step 1: Run this command in
-													Terminal to copy your config
-													file to your clipboard
+													Step 1: Run this terminal
+													command to copy your config
+													to your clipboard
 												</h3>
 												<TerminalCommand
 													command={command}
@@ -201,12 +201,6 @@ function App() {
 													Step 2: Paste the copied
 													content below.
 												</h3>
-												<p className="text-sm mb-4">
-													This data is stored locally
-													(client-side on your
-													browser) and never leaves
-													your computer.
-												</p>
 												<textarea
 													className="textarea textarea-bordered w-full h-16 font-mono"
 													placeholder="Paste the copied JSON content here..."
@@ -275,10 +269,8 @@ function App() {
 														<div>
 															<h3 className="text-lg font-tiempos-regular mb-4">
 																Step 1: Run
-																these commands
-																in Terminal to
-																apply your
-																changes
+																these terminal
+																commands
 															</h3>
 
 															{/* Only show JSON write command if there are MCP servers */}
@@ -333,8 +325,7 @@ function App() {
 												<div className="bg-base-200 rounded-lg p-4 mt-4">
 													<h3 className="text-lg font-tiempos-regular">
 														Step 2: Restart
-														Claude.app to see your
-														changes
+														Claude.app
 													</h3>
 												</div>
 											</div>
@@ -343,6 +334,23 @@ function App() {
 								)}
 							</div>
 						)}
+				</div>
+				<div className="flex justify-center mt-8">
+					<span className="text-sm text-center">
+						Made with ❤️ by{" "}
+						<a href="https://zue.ai" className="link">
+							zue.ai
+						</a>{" "}
+						- AI automation agency and product studio.
+						<br />
+						Contact us for AI automation solutions and product
+						development -{" "}
+						<a href="mailto:hi@zue.ai" className="link">
+							hi@zue.ai
+						</a>
+						<br />
+						This project is not affiliated with Anthropic.
+					</span>
 				</div>
 			</div>
 		</main>
