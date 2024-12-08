@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('./assets/tiempos-text-web-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('./assets/tiempos-text-web-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@layer base {
+	h1 {
+		@apply font-tiempos-semibold;
+	}
+	h2 {
+		@apply font-tiempos-semibold;
+	}
+	h3 {
+		@apply font-tiempos-regular;
+	}
+	p {
+		@apply font-tiempos-regular;
+	}
+}
