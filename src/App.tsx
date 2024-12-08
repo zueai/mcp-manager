@@ -74,7 +74,24 @@ function App() {
 	return (
 		<main className="max-h-screen p-16">
 			<div className="container mx-auto p-4 max-w-3xl">
-				<h1 className="text-3xl text-center m-8">
+				<div className="flex justify-center items-center gap-8 mb-16">
+					<div className="flex items-center justify-center rounded-2xl h-16 p-8 border-2 border-primary/30">
+						<img
+							src="/mcp-logo.svg"
+							alt="MCP Manager"
+							className="h-8"
+						/>
+					</div>
+
+					<div className="flex items-center justify-center rounded-2xl p-8 h-16 border-2 border-primary/30">
+						<img
+							src="/claude-logo.svg"
+							alt="Claude"
+							className="h-6"
+						/>
+					</div>
+				</div>
+				<h1 className="text-3xl font-light text-center my-8">
 					MCP Manager for Claude Desktop
 				</h1>
 
@@ -148,7 +165,7 @@ function App() {
 							</div>
 						)}
 				</div>
-				<div className="flex justify-center mt-8">
+				<div className="flex justify-center my-8">
 					<span className="text-sm text-center">
 						Made with ❤️ by{" "}
 						<a href="https://zue.ai" className="link">
@@ -162,7 +179,8 @@ function App() {
 							hi@zue.ai
 						</a>
 						<br />
-						This project is not affiliated with Anthropic.
+						This project is not affiliated with Anthropic. All logos
+						are trademarks of their respective owners.
 					</span>
 				</div>
 			</div>
