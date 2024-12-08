@@ -178,5 +178,15 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		terminalCommand: "",
 		docsUrl:
 			"https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite/README.md"
+	},
+
+	sentry: {
+		icon: "https://www.svgrepo.com/show/306716/sentry.svg",
+		description: "Retrieve and analyze issues from Sentry.io for debugging",
+		command: "uvx",
+		args: ["mcp-server-sentry", "--auth-token", ""],
+		terminalCommand: "",
+		docsUrl:
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/sentry"
 	}
 }

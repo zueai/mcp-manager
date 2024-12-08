@@ -1,6 +1,7 @@
 import { EnvConfig } from "@/components/server-configs/env-config"
 import { FilesystemConfig } from "@/components/server-configs/filesystem-config"
 import { PostgresConfig } from "@/components/server-configs/postgres-config"
+import { SQLiteConfig } from "@/components/server-configs/sqlite-config"
 import { TerminalCommand } from "@/components/terminal-command"
 import { SERVER_CONFIGS } from "@/server-configs"
 import { ArrowUpRight, Trash2 } from "lucide-react"
@@ -53,6 +54,21 @@ export function MCPServerCard({
 		onUpdate(serverName, newConfig)
 	}
 
+	const handleSqliteUpdate = (dbPath: string) => {
+		const newConfig = {
+			...config,
+			args: [
+				"--directory",
+				"parent_of_servers_repo/servers/src/sqlite",
+				"run",
+				"mcp-server-sqlite",
+				"--db-path",
+				dbPath
+			]
+		}
+		onUpdate(serverName, newConfig)
+	}
+
 	const handleDelete = (e: React.MouseEvent) => {
 		e.stopPropagation()
 		onDelete(serverName)
@@ -63,6 +79,7 @@ export function MCPServerCard({
 	const hasTerminalCommand = Boolean(serverConfig?.terminalCommand)
 	const isFilesystemServer = serverName === "filesystem"
 	const isPostgresServer = serverName === "postgres"
+	const isSqliteServer = serverName === "sqlite"
 	const iconUrl = icon || serverConfig?.icon
 
 	return (
@@ -98,6 +115,11 @@ export function MCPServerCard({
 								config.args[2] || "postgresql://localhost/mydb"
 							}
 							onUpdate={handlePostgresUpdate}
+						/>
+					) : isSqliteServer ? (
+						<SQLiteConfig
+							initialPath={config.args[5] || "~/test.db"}
+							onUpdate={handleSqliteUpdate}
 						/>
 					) : serverConfig?.env &&
 						Object.keys(serverConfig.env).length > 0 ? (

@@ -25,12 +25,38 @@ export function ApplyingInstructions({
 				<h2 className="collapse-title text-xl font-tiempos-regular my-4">
 					Apply your changes
 				</h2>
-				<div className="collapse-content">
+				<div className="collapse-content space-y-4">
+					<div className="bg-base-200 rounded-xl p-4">
+						<h3 className="text-lg font-tiempos-regular">
+							Step 1: Install Node.js and uv (if not already
+							installed)
+						</h3>
+						<div className="space-y-4 mt-4">
+							<span className="pt-2 text-sm">
+								Node.js can be installed from{" "}
+								<a
+									href="https://nodejs.org/en/download/prebuilt-installer"
+									className="link"
+									target="_blank"
+									rel="noreferrer"
+								>
+									https://nodejs.org/en/download/prebuilt-installer
+								</a>
+							</span>
+							<br />
+							<br />
+
+							<span className="text-sm pt-2">
+								Install uv with:
+							</span>
+							<TerminalCommand command="curl -LsSf https://astral.sh/uv/install.sh | sh" />
+						</div>
+					</div>
 					<div className="bg-base-200 rounded-xl p-4">
 						<div className="space-y-4">
 							<div>
 								<h3 className="text-lg font-tiempos-regular mb-4">
-									Step 1: Run{" "}
+									Step 2: Run{" "}
 									{terminalServers.length >= 1
 										? "these"
 										: "this"}{" "}
@@ -75,7 +101,7 @@ export function ApplyingInstructions({
 					</div>
 					<div className="bg-base-200 rounded-xl p-4 mt-4">
 						<h3 className="text-lg font-tiempos-regular">
-							Step 2: Restart Claude.app
+							Step 3: Restart Claude.app
 						</h3>
 					</div>
 				</div>
