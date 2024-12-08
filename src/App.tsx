@@ -75,7 +75,7 @@ function App() {
 		<main className="max-h-screen p-16">
 			<div className="container mx-auto p-4 max-w-4xl">
 				<div className="flex justify-center items-center gap-8 mb-16">
-					<div className="flex items-center justify-center rounded-2xl h-16 p-8 border-2 border-primary/30">
+					<div className="flex items-center justify-center rounded-2xl h-16 p-8 border-2 border-black/20">
 						<img
 							src="/mcp-logo.svg"
 							alt="MCP Manager"
@@ -98,9 +98,9 @@ function App() {
 				<div className="flex justify-center">
 					<span className="text-md text-center mb-8">
 						Give Claude access to private data, APIs, and other
-						services so it can answer questions and perform actions
-						on your behalf using the Model Context Protocol. Learn
-						more about MCP{" "}
+						services using the Model Context Protocol so it can
+						answer questions and perform actions on your behalf.
+						Learn more about MCP{" "}
 						<a
 							href="https://modelcontextprotocol.io"
 							className="link"
@@ -122,9 +122,9 @@ function App() {
 						<br />
 						<br />
 						This is a simple, web-based GUI to help you manage MCP
-						servers in your Claude App - no data is stored or sent
-						to any servers because this app is running entirely
-						client-side in your browser.
+						servers in your Claude App - this app is running
+						entirely client-side in your browser so your data never
+						leaves your computer.
 					</span>
 				</div>
 
@@ -189,7 +189,7 @@ function App() {
 						>
 							Contact us
 						</a>{" "}
-						for AI automation solutions and custom software
+						for custom AI automation solutions and product
 						development.
 						<br />
 						This project is not affiliated with Anthropic. All logos

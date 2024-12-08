@@ -32,11 +32,11 @@ export function ApplyingInstructions({
 							installed)
 						</h3>
 						<div className="space-y-4 mt-4">
-							<span className="pt-2 text-sm">
-								Node.js can be installed from{" "}
+							<span className="pt-2 text-md">
+								- Install Node.js:{" "}
 								<a
 									href="https://nodejs.org/en/download/prebuilt-installer"
-									className="link"
+									className="link link-primary"
 									target="_blank"
 									rel="noreferrer"
 								>
@@ -45,9 +45,16 @@ export function ApplyingInstructions({
 							</span>
 							<br />
 							<br />
-
-							<span className="text-sm pt-2">
-								Install uv with:
+							<span className="text-md pt-2">
+								- Install{" "}
+								<a
+									href="https://docs.astral.sh/uv"
+									target="_blank"
+									rel="noreferrer"
+								>
+									uv
+								</a>{" "}
+								by running this command:
 							</span>
 							<TerminalCommand command="curl -LsSf https://astral.sh/uv/install.sh | sh" />
 						</div>
