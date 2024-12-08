@@ -121,7 +121,7 @@ export function MCPServerCard({
 						className="btn btn-sm bg-red-100 hover:bg-red-200"
 					>
 						<Trash2 className="w-4 h-4" />
-						<span className="ml-2">Delete</span>
+						<span>Delete</span>
 					</button>
 				</div>
 			</div>

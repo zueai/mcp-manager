@@ -96,6 +96,33 @@ function App() {
 					MCP Manager for Claude Desktop
 				</h1>
 
+				<div className="flex justify-center">
+					<span className="text-md text-center mb-8">
+						This is just a simple GUI to manage MCP servers that
+						your Claude Desktop App can use.
+						<br />
+						Learn more about MCP{" "}
+						<a
+							href="https://modelcontextprotocol.io"
+							className="link"
+							target="_blank"
+							rel="noreferrer"
+						>
+							here
+						</a>{" "}
+						and{" "}
+						<a
+							href="https://www.anthropic.com/news/model-context-protocol"
+							className="link"
+							target="_blank"
+							rel="noreferrer"
+						>
+							here
+						</a>
+						.
+					</span>
+				</div>
+
 				<div className="space-y-6">
 					<div className="join join-vertical w-full">
 						<div className="collapse collapse-arrow join-item border border-base-300 bg-white">
@@ -204,7 +231,7 @@ function App() {
 							/>
 
 							<div className="join join-vertical w-full">
-								<div className="collapse collapse-arrow join-item border border-base-300 bg-white">
+								<div className="collapse collapse-arrow join-item border border-base-300 bg-white mb-16">
 									<input type="checkbox" />
 									<h2 className="collapse-title text-xl font-tiempos-regular">
 										Save your changes

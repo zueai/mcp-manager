@@ -104,7 +104,7 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 					<button
 						type="button"
 						onClick={() => setHasChanges(false)}
-						className="btn btn-primary btn-sm"
+						className="btn btn-outline btn-sm"
 					>
 						<Save className="w-4 h-4" />
 						<span className="ml-2">Save All Changes</span>
@@ -115,7 +115,7 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 			<dialog id="add_server_modal" className="modal backdrop-blur-sm">
 				<div className="modal-box">
 					<div className="flex justify-between items-center mb-4">
-						<h3 className="font-bold text-lg">Add New Server</h3>
+						<h3 className="text-xl">Add New Server</h3>
 						<button
 							type="button"
 							className="btn btn-sm btn-ghost"

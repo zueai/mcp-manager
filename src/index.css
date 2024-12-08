@@ -29,4 +29,8 @@
 	p {
 		@apply font-tiempos-regular;
 	}
+	span {
+		@apply font-tiempos-regular;
+		font-weight: 400;
+	}
 }
