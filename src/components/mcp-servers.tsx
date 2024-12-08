@@ -1,3 +1,5 @@
+import { Plus, Save } from "lucide-react"
+import { useState } from "react"
 import { CloudflareIcon } from "./icons"
 import { MCPServerCard } from "./mcp-server-card"
 
@@ -33,6 +35,8 @@ const SERVER_CONFIGS = {
 }
 
 export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
+	const [hasChanges, setHasChanges] = useState(false)
+
 	const handleServerUpdate = (name: string, newConfig: MCPServer) => {
 		const updatedContent = {
 			...jsonContent,
@@ -41,6 +45,7 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 				[name]: newConfig
 			}
 		}
+		setHasChanges(true)
 		onUpdate(updatedContent)
 	}
 
@@ -59,7 +64,25 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 
 	return (
 		<div className="space-y-4 my-32">
-			<h2 className="text-2xl text-center">Your MCP Servers</h2>
+			<div className="flex justify-between items-center mb-8">
+				<div className="flex items-center gap-4">
+					<h2 className="text-2xl text-center">Your MCP Servers</h2>
+					<button type="button" className="btn btn-primary btn-sm">
+						<Plus className="w-4 h-4" />
+						<span className="ml-2">Add Server</span>
+					</button>
+				</div>
+				{hasChanges && (
+					<button
+						type="button"
+						onClick={() => setHasChanges(false)}
+						className="btn btn-primary btn-sm"
+					>
+						<Save className="w-4 h-4" />
+						<span className="ml-2">Save All Changes</span>
+					</button>
+				)}
+			</div>
 
 			<div className="space-y-4">
 				{hasServers ? (
@@ -91,7 +114,7 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 				) : (
 					<p className=" text-gray-500 text-center">
 						You currently have no MCP servers configured. Add one by
-						clicking the button below.
+						clicking the "Add Server" button.
 					</p>
 				)}
 			</div>

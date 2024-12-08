@@ -27,7 +27,6 @@ export function MCPServerCard({
 	onUpdate,
 	onDelete
 }: MCPServerCardProps) {
-	const [hasChanges, setHasChanges] = useState(false)
 	const [values, setValues] = useState<Record<string, string>>(() => {
 		if (!variables) return {}
 		const initialValues: Record<string, string> = {}
@@ -43,22 +42,16 @@ export function MCPServerCard({
 		argIndex: number
 	) => {
 		setValues((prev) => ({ ...prev, [name]: value }))
-		setHasChanges(true)
-	}
 
-	const handleSave = () => {
-		try {
-			const newConfig = { ...config }
-			if (variables) {
-				for (const v of variables) {
-					newConfig.args[v.argIndex] = values[v.name]
-				}
+		// Update parent immediately
+		const newConfig = { ...config }
+		if (variables) {
+			for (const v of variables) {
+				newConfig.args[v.argIndex] =
+					v.name === name ? value : values[v.name]
 			}
-			onUpdate(serverName, newConfig)
-			setHasChanges(false)
-		} catch (error) {
-			console.error("Error saving configuration:", error)
 		}
+		onUpdate(serverName, newConfig)
 	}
 
 	const handleDelete = (e: React.MouseEvent) => {
@@ -68,13 +61,13 @@ export function MCPServerCard({
 
 	return (
 		<div className="join join-vertical w-full">
-			<div className="collapse collapse-arrow join-item border border-base-300 bg-white">
+			<div className="collapse collapse-arrow join-item border border-base-300 bg-white p-4">
 				<input type="checkbox" defaultChecked />
 				<div className="collapse-title">
 					<div className="flex items-center">
 						<div className="flex items-center gap-2">
 							{icon}
-							<h3 className="text-lg font-medium capitalize">
+							<h3 className="text-lg font-semibold capitalize">
 								{serverName}
 							</h3>
 						</div>
@@ -82,7 +75,7 @@ export function MCPServerCard({
 				</div>
 				<div className="collapse-content">
 					{variables && (
-						<div className="bg-base-200 rounded-lg p-4 mt-4">
+						<div className="bg-base-200 rounded-lg p-4">
 							<div className="space-y-4">
 								{variables.map((variable) => (
 									<div
@@ -118,16 +111,6 @@ export function MCPServerCard({
 					)}
 				</div>
 				<div className="flex gap-2 mb-4 ml-4">
-					{variables && hasChanges && (
-						<button
-							type="button"
-							onClick={handleSave}
-							className="btn btn-primary btn-sm"
-						>
-							<Save className="w-4 h-4" />
-							<span className="ml-2">Save Changes</span>
-						</button>
-					)}
 					<button
 						type="button"
 						onClick={handleDelete}

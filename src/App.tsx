@@ -1,4 +1,4 @@
-import { CheckCircle2, Copy, Save, Upload, XCircle } from "lucide-react"
+import { Check, Copy, Save, Upload, XCircle } from "lucide-react"
 import type React from "react"
 import { useState } from "react"
 import { MCPServers } from "./components/mcp-servers"
@@ -90,7 +90,7 @@ function App() {
 	}
 
 	return (
-		<main className="bg-[#f2f1e9] min-h-screen">
+		<main className="max-h-screen p-16">
 			<div className="container mx-auto p-4 max-w-3xl">
 				<h1 className="text-3xl text-center m-8">
 					MCP Manager for Claude Desktop
@@ -131,7 +131,7 @@ function App() {
 														className="btn btn-primary btn-sm"
 													>
 														{hasCopied ? (
-															<CheckCircle2 className="w-4 h-4" />
+															<Check className="w-4 h-4" />
 														) : (
 															<Copy className="w-4 h-4" />
 														)}
@@ -163,8 +163,8 @@ function App() {
 													onChange={handleJsonInput}
 												/>
 												{uploadStatus === "success" && (
-													<div className="mt-2 flex items-center text-success">
-														<CheckCircle2 className="w-5 h-5" />
+													<div className="mt-2 flex items-center text-primary">
+														<Check className="w-5 h-5" />
 														<span className="ml-2">
 															Uploaded
 															successfully.
@@ -214,8 +214,8 @@ function App() {
 											<div className="space-y-4">
 												<div>
 													<h3 className="text-lg font-tiempos-regular mb-4">
-														Run this command in
-														Terminal to save your
+														Step 1: Run this command
+														in Terminal to save your
 														changes to the config
 														file
 													</h3>
@@ -231,9 +231,9 @@ function App() {
 															className="btn btn-primary btn-sm"
 														>
 															{hasCopiedSave ? (
-																<CheckCircle2 className="w-4 h-4" />
+																<Check className="w-4 h-4" />
 															) : (
-																<Save className="w-4 h-4" />
+																<Copy className="w-4 h-4" />
 															)}
 															<span className="ml-2">
 																{hasCopiedSave
@@ -244,6 +244,12 @@ function App() {
 													</div>
 												</div>
 											</div>
+										</div>
+										<div className="bg-base-200 rounded-lg p-4 mt-4">
+											<h3 className="text-lg font-tiempos-regular">
+												Step 2: Restart Claude.app to
+												see your changes
+											</h3>
 										</div>
 									</div>
 								</div>
