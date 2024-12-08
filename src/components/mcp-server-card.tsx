@@ -61,37 +61,22 @@ export function MCPServerCard({
 		}
 	}
 
+	const handleDelete = (e: React.MouseEvent) => {
+		e.stopPropagation()
+		onDelete(serverName)
+	}
+
 	return (
 		<div className="join join-vertical w-full">
 			<div className="collapse collapse-arrow join-item border border-base-300 bg-white">
 				<input type="checkbox" defaultChecked />
 				<div className="collapse-title">
-					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-4">
+					<div className="flex items-center">
+						<div className="flex items-center gap-2">
 							{icon}
 							<h3 className="text-lg font-medium capitalize">
 								{serverName}
 							</h3>
-						</div>
-						<div className="flex gap-2">
-							{variables && hasChanges && (
-								<button
-									type="button"
-									onClick={handleSave}
-									className="btn btn-primary btn-sm"
-								>
-									<Save className="w-4 h-4" />
-									<span className="ml-2">Save Changes</span>
-								</button>
-							)}
-							<button
-								type="button"
-								onClick={() => onDelete(serverName)}
-								className="btn btn-sm bg-red-200 hover:bg-red-400"
-							>
-								<Trash2 className="w-4 h-4" />
-								<span className="ml-2">Delete</span>
-							</button>
 						</div>
 					</div>
 				</div>
@@ -131,6 +116,26 @@ export function MCPServerCard({
 							</div>
 						</div>
 					)}
+				</div>
+				<div className="flex gap-2 mb-4 ml-4">
+					{variables && hasChanges && (
+						<button
+							type="button"
+							onClick={handleSave}
+							className="btn btn-primary btn-sm"
+						>
+							<Save className="w-4 h-4" />
+							<span className="ml-2">Save Changes</span>
+						</button>
+					)}
+					<button
+						type="button"
+						onClick={handleDelete}
+						className="btn btn-sm bg-red-100 hover:bg-red-200"
+					>
+						<Trash2 className="w-4 h-4" />
+						<span className="ml-2">Delete</span>
+					</button>
 				</div>
 			</div>
 		</div>

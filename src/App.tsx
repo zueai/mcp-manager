@@ -1,7 +1,7 @@
 import { CheckCircle2, Copy, Save, Upload, XCircle } from "lucide-react"
 import type React from "react"
 import { useState } from "react"
-import { MCPServers } from "./mcp-servers"
+import { MCPServers } from "./components/mcp-servers"
 
 function App() {
 	const [jsonContent, setJsonContent] = useState<Record<string, unknown>>({})

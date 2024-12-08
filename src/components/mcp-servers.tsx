@@ -1,5 +1,5 @@
-import { MCPServerCard } from "./components/MCPServerCard"
 import { CloudflareIcon } from "./icons"
+import { MCPServerCard } from "./mcp-server-card"
 
 type MCPServer = {
 	command: string
@@ -34,7 +34,8 @@ const SERVER_CONFIGS = {
 
 export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 	const handleServerUpdate = (name: string, newConfig: MCPServer) => {
-		const updatedContent: MCPConfig = {
+		const updatedContent = {
+			...jsonContent,
 			mcpServers: {
 				...jsonContent.mcpServers,
 				[name]: newConfig
@@ -44,17 +45,20 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 	}
 
 	const handleServerDelete = (name: string) => {
+		console.log("Before delete:", jsonContent)
 		const { [name]: _, ...rest } = jsonContent.mcpServers
-		const updatedContent: MCPConfig = {
+		const updatedContent = {
+			...jsonContent,
 			mcpServers: rest
 		}
+		console.log("After delete:", updatedContent)
 		onUpdate(updatedContent)
 	}
 
 	const hasServers = Object.keys(jsonContent.mcpServers).length > 0
 
 	return (
-		<div className="space-y-4">
+		<div className="space-y-4 my-32">
 			<h2 className="text-2xl text-center">Your MCP Servers</h2>
 
 			<div className="space-y-4">
@@ -85,7 +89,7 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 						}
 					)
 				) : (
-					<p className=" text-gray-500">
+					<p className=" text-gray-500 text-center">
 						You currently have no MCP servers configured. Add one by
 						clicking the button below.
 					</p>
