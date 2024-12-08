@@ -1,7 +1,8 @@
+import { MCPServerCard } from "@/components/mcp-server-card"
+import { SERVER_CONFIGS } from "@/config/server-configs"
+import { capitalizeFirstLetter } from "@/utils"
 import { Plus, Save, X } from "lucide-react"
 import { useState } from "react"
-import { CloudflareIcon } from "./icons"
-import { MCPServerCard } from "./mcp-server-card"
 
 type MCPServer = {
 	command: string
@@ -19,22 +20,16 @@ type MCPConfig = {
 type MCPServersProps = {
 	jsonContent: MCPConfig
 	onUpdate: (newContent: MCPConfig) => void
+	onServerAdd: (serverType: keyof typeof SERVER_CONFIGS) => void
+	onServerRemove: (serverType: string) => void
 }
 
-const SERVER_CONFIGS = {
-	cloudflare: {
-		icon: <CloudflareIcon className="w-8 h-8" />,
-		variables: [
-			{
-				name: "account id",
-				argIndex: 2,
-				value: ""
-			}
-		]
-	}
-}
-
-export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
+export function MCPServers({
+	jsonContent,
+	onUpdate,
+	onServerAdd,
+	onServerRemove
+}: MCPServersProps) {
 	const [hasChanges, setHasChanges] = useState(false)
 
 	const handleServerUpdate = (name: string, newConfig: MCPServer) => {
@@ -50,32 +45,11 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 	}
 
 	const handleServerDelete = (name: string) => {
-		console.log("Before delete:", jsonContent)
-		const { [name]: _, ...rest } = jsonContent.mcpServers
-		const updatedContent = {
-			...jsonContent,
-			mcpServers: rest
-		}
-		console.log("After delete:", updatedContent)
-		onUpdate(updatedContent)
+		onServerRemove(name)
 	}
 
 	const handleAddServer = (serverType: keyof typeof SERVER_CONFIGS) => {
-		const newServer = {
-			command: "mcp",
-			args: ["cloudflare"]
-		}
-
-		const updatedContent = {
-			...jsonContent,
-			mcpServers: {
-				...jsonContent.mcpServers,
-				[serverType]: newServer
-			}
-		}
-
-		setHasChanges(true)
-		onUpdate(updatedContent)
+		onServerAdd(serverType)
 	}
 
 	const hasServers = Object.keys(jsonContent.mcpServers).length > 0
@@ -136,7 +110,7 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 							<button
 								key={serverType}
 								type="button"
-								className="btn btn-secondary hover:bg-secondary/105 hover:text-secondary-content w-full flex justify-start gap-4"
+								className="w-full bg-base-200 hover:bg-base-300 rounded-lg p-4 flex items-start gap-6"
 								onClick={() => {
 									handleAddServer(
 										serverType as keyof typeof SERVER_CONFIGS
@@ -148,12 +122,25 @@ export function MCPServers({ jsonContent, onUpdate }: MCPServersProps) {
 									)?.close()
 								}}
 							>
-								{
-									SERVER_CONFIGS[
-										serverType as keyof typeof SERVER_CONFIGS
-									].icon
-								}
-								<span className="capitalize">{serverType}</span>
+								<div className="my-auto">
+									{
+										SERVER_CONFIGS[
+											serverType as keyof typeof SERVER_CONFIGS
+										].icon
+									}
+								</div>
+								<div className="flex flex-col text-left">
+									<span className="text-xl font-normal mb-1">
+										{capitalizeFirstLetter(serverType)}
+									</span>
+									<p className="text-sm opacity-80">
+										{
+											SERVER_CONFIGS[
+												serverType as keyof typeof SERVER_CONFIGS
+											].description
+										}
+									</p>
+								</div>
 							</button>
 						))}
 					</div>

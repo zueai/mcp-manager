@@ -1,9 +1,7 @@
-import { Save, Trash2 } from "lucide-react"
+import { SERVER_CONFIGS } from "@/config/server-configs"
+import { capitalizeFirstLetter } from "@/utils"
+import { Trash2 } from "lucide-react"
 import { useState } from "react"
-
-const capitalizeFirstLetter = (str: string): string => {
-	return str.charAt(0).toUpperCase() + str.slice(1)
-}
 
 type MCPServerConfig = {
 	command: string
@@ -63,6 +61,11 @@ export function MCPServerCard({
 		onDelete(serverName)
 	}
 
+	// Get the server config to check for terminal command
+	const serverConfig =
+		SERVER_CONFIGS[serverName as keyof typeof SERVER_CONFIGS]
+	const hasTerminalCommand = Boolean(serverConfig?.terminalCommand)
+
 	return (
 		<div className="join join-vertical w-full">
 			<div className="collapse collapse-arrow join-item border border-base-300 bg-white p-4">
@@ -71,50 +74,61 @@ export function MCPServerCard({
 					<div className="flex items-center">
 						<div className="flex items-center gap-2">
 							{icon}
-							<h3 className="text-lg font-sans font-semibold capitalize">
-								{serverName}
-							</h3>
+							<h3 className="text-lg capitalize">{serverName}</h3>
 						</div>
 					</div>
 				</div>
 				<div className="collapse-content">
-					{variables && (
+					{hasTerminalCommand ? (
 						<div className="bg-base-200 rounded-lg p-4">
-							<div className="space-y-4">
-								{variables.map((variable) => (
-									<div
-										key={variable.name}
-										className="form-control"
-									>
-										<label
-											className="label"
-											htmlFor={`${serverName}-${variable.name}`}
-										>
-											<span className="label-text">
-												{variable.name}
-											</span>
-										</label>
-										<input
-											id={`${serverName}-${variable.name}`}
-											type="text"
-											value={values[variable.name]}
-											onChange={(e) =>
-												handleVariableChange(
-													variable.name,
-													e.target.value,
-													variable.argIndex
-												)
-											}
-											className="input input-bordered w-full"
-											placeholder={`Enter ${capitalizeFirstLetter(serverName)} ${variable.name}`}
-										/>
-									</div>
-								))}
-							</div>
+							<p className="text-sm text-gray-600">
+								MCP Manager can't update this server directly,
+								please run the{" "}
+								<code className="font-mono">
+									{serverConfig?.terminalCommand}
+								</code>{" "}
+								command below to add/modify this server.
+							</p>
 						</div>
+					) : (
+						variables && (
+							<div className="bg-base-200 rounded-lg p-4">
+								<div className="space-y-4">
+									{variables.map((variable) => (
+										<div
+											key={variable.name}
+											className="form-control"
+										>
+											<label
+												className="label"
+												htmlFor={`${serverName}-${variable.name}`}
+											>
+												<span className="label-text">
+													{variable.name}
+												</span>
+											</label>
+											<input
+												id={`${serverName}-${variable.name}`}
+												type="text"
+												value={values[variable.name]}
+												onChange={(e) =>
+													handleVariableChange(
+														variable.name,
+														e.target.value,
+														variable.argIndex
+													)
+												}
+												className="input input-bordered w-full"
+												placeholder={`Enter ${capitalizeFirstLetter(serverName)} ${variable.name}`}
+											/>
+										</div>
+									))}
+								</div>
+							</div>
+						)
 					)}
 				</div>
-				<div className="flex gap-2 mb-4 ml-4">
+				<div className="flex gap-2 mb-4 mr-4 justify-end">
 					<button
 						type="button"
 						onClick={handleDelete}
