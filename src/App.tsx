@@ -73,7 +73,7 @@ function App() {
 
 	return (
 		<main className="max-h-screen p-16">
-			<div className="container mx-auto p-4 max-w-3xl">
+			<div className="container mx-auto p-4 max-w-4xl">
 				<div className="flex justify-center items-center gap-8 mb-16">
 					<div className="flex items-center justify-center rounded-2xl h-16 p-8 border-2 border-primary/30">
 						<img
@@ -91,17 +91,21 @@ function App() {
 						/>
 					</div>
 				</div>
-				<h1 className="text-3xl font-light text-center my-8">
+				<h1 className="text-5xl font-light text-center my-8">
 					MCP Manager for Claude Desktop
 				</h1>
 
 				<div className="flex justify-center">
 					<span className="text-md text-center mb-8">
-						This is a simple GUI to manage MCP servers that your
-						Claude Desktop App can use.
+						This is a simple, web-based GUI to help you manage MCP
+						servers for your Claude Desktop App.
 						<br />
-						This app runs entirely client-side in your browser. No
-						data is stored or sent to any servers.
+						<br />
+						With MCP, you can give Claude access to private data
+						sources, APIs, and other services so it can answer
+						questions and perform actions on your behalf. This app
+						runs entirely client-side in your browser. No data is
+						stored or sent to any servers.
 						<br />
 						<br />
 						Learn more about MCP{" "}

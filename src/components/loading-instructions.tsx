@@ -34,9 +34,10 @@ export function LoadingInstructions({
 						<div className="space-y-6">
 							<div className="bg-base-200 rounded-xl p-4">
 								<div>
-									<h3 className="text-md font-tiempos-regular mb-4">
+									<h3 className="text-lg font-tiempos-regular mb-4">
 										Step 1: Run this terminal command to
-										copy your config to your clipboard
+										copy your current config to your
+										clipboard
 									</h3>
 									<TerminalCommand command={command} />
 								</div>
@@ -45,7 +46,7 @@ export function LoadingInstructions({
 							<div className="bg-base-200 rounded-xl p-4">
 								<div>
 									<h3 className="text-lg font-tiempos-regular mb-4">
-										Step 2: Paste the copied content below.
+										Step 2: Paste your config below.
 									</h3>
 									<textarea
 										className="textarea textarea-bordered w-full h-16 font-mono"
@@ -56,7 +57,7 @@ export function LoadingInstructions({
 										<div className="mt-2 flex items-center text-primary">
 											<Check className="w-5 h-5" />
 											<span className="ml-2">
-												Uploaded successfully.
+												Valid MCP Configuration
 											</span>
 										</div>
 									)}

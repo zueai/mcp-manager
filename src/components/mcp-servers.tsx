@@ -75,11 +75,11 @@ export function MCPServers({
 
 			<dialog id="add_server_modal" className="modal backdrop-blur-sm">
 				<div className="modal-box">
-					<div className="flex justify-between items-center mb-4">
-						<h3 className="text-xl">Add New Server</h3>
+					<div className="flex justify-between items-center mb-4 sticky top-0 bg-base-100 py-4 -mt-4 -mx-6 px-6">
+						<h3 className="text-xl ml-4">Add New Server</h3>
 						<button
 							type="button"
-							className="btn btn-sm btn-ghost"
+							className="btn btn-square btn-ghost"
 							onClick={() =>
 								(
 									document.getElementById(
@@ -92,7 +92,7 @@ export function MCPServers({
 						</button>
 					</div>
 
-					<div className="grid gap-4 py-4">
+					<div className="grid gap-4 py-4 max-h-[70vh] overflow-y-auto px-4">
 						{Object.keys(SERVER_CONFIGS).map((serverType) => (
 							<button
 								key={serverType}

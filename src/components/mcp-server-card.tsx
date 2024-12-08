@@ -1,8 +1,8 @@
 import { TerminalCommand } from "@/components/terminal-command"
 import { SERVER_CONFIGS } from "@/server-configs"
 import { capitalizeFirstLetter } from "@/utils"
-import { ArrowUpRight, Trash2 } from "lucide-react"
-import { useState } from "react"
+import { ArrowUpRight, Plus, Trash2, X } from "lucide-react"
+import { useCallback, useState } from "react"
 
 type MCPServerConfig = {
 	command: string
@@ -26,6 +26,24 @@ export function MCPServerCard({
 	onDelete
 }: MCPServerCardProps) {
 	const [envValues, setEnvValues] = useState<Record<string, string>>({})
+	const [filesystemPaths, setFilesystemPaths] = useState<string[]>([
+		config.args[2] || "/Users/"
+	])
+
+	const handleFilesystemPathChange = (value: string, index: number) => {
+		// Only update local state for immediate UI feedback
+		const newPaths = [...filesystemPaths]
+		newPaths[index] = value
+		setFilesystemPaths(newPaths)
+	}
+
+	const handleFilesystemPathBlur = () => {
+		const newConfig = {
+			...config,
+			args: [...config.args.slice(0, 2), ...filesystemPaths]
+		}
+		onUpdate(serverName, newConfig)
+	}
 
 	const handleEnvChange = (key: string, value: string) => {
 		setEnvValues((prev) => ({ ...prev, [key]: value }))
@@ -45,13 +63,31 @@ export function MCPServerCard({
 		onDelete(serverName)
 	}
 
-	// Get the server config to check for terminal command
+	const handleAddPath = () => {
+		const newPaths = [...filesystemPaths, ""]
+		const newConfig = {
+			...config,
+			args: [...config.args.slice(0, 2), ...newPaths]
+		}
+		onUpdate(serverName, newConfig)
+		setFilesystemPaths(newPaths)
+	}
+
+	const handleRemovePath = (index: number) => {
+		const newPaths = filesystemPaths.filter((_, i) => i !== index)
+		const newConfig = {
+			...config,
+			args: [...config.args.slice(0, 2), ...newPaths]
+		}
+		onUpdate(serverName, newConfig)
+		setFilesystemPaths(newPaths)
+	}
+
 	const serverConfig =
 		SERVER_CONFIGS[serverName as keyof typeof SERVER_CONFIGS]
 	const hasTerminalCommand = Boolean(serverConfig?.terminalCommand)
-
-	// Get the server config at the start of the component
-	const iconUrl = icon || serverConfig?.icon // Use the prop or fallback to config
+	const isFilesystemServer = serverName === "filesystem"
+	const iconUrl = icon || serverConfig?.icon
 
 	return (
 		<div className="join join-vertical w-full">
@@ -66,7 +102,6 @@ export function MCPServerCard({
 									alt={`${serverName} icon`}
 									className="w-20 h-12 object-contain"
 									onError={(e) => {
-										// Fallback if image fails to load
 										e.currentTarget.style.display = "none"
 									}}
 								/>
@@ -76,7 +111,68 @@ export function MCPServerCard({
 					</div>
 				</div>
 				<div className="collapse-content">
-					{serverConfig?.env &&
+					{isFilesystemServer ? (
+						<div className="bg-base-200 rounded-xl p-4 mb-4 space-y-4">
+							<div className="space-y-4">
+								{filesystemPaths.map((path, index) => (
+									<div
+										key={index + serverName}
+										className="flex items-center gap-2"
+									>
+										<div className="form-control flex-1">
+											<label
+												htmlFor={`filesystem-path-${serverName}-${index}`}
+												className="label"
+											>
+												<span className="label-text mb-2">
+													Allowed Directory Path{" "}
+													{filesystemPaths.length > 1
+														? index + 1
+														: ""}
+												</span>
+											</label>
+											<input
+												id={`filesystem-path-${index}`}
+												type="text"
+												placeholder="Enter the directory path (e.g., /Users/username/Documents)"
+												className="input input-bordered w-full"
+												value={path}
+												onChange={(e) =>
+													handleFilesystemPathChange(
+														e.target.value,
+														index
+													)
+												}
+												onBlur={
+													handleFilesystemPathBlur
+												}
+											/>
+										</div>
+										{filesystemPaths.length > 1 && (
+											<button
+												type="button"
+												className="btn btn-ghost btn-sm mt-8"
+												onClick={() =>
+													handleRemovePath(index)
+												}
+											>
+												<X className="w-4 h-4" />
+											</button>
+										)}
+									</div>
+								))}
+								<button
+									type="button"
+									className="btn btn-ghost btn-sm"
+									onClick={handleAddPath}
+								>
+									<Plus className="w-4 h-4" />
+									<span>Add Another Path</span>
+								</button>
+							</div>
+						</div>
+					) : (
+						serverConfig?.env &&
 						Object.keys(serverConfig.env).length > 0 && (
 							<div className="bg-base-200 rounded-xl p-4 mb-4 space-y-4">
 								<div className="space-y-2">
@@ -97,9 +193,7 @@ export function MCPServerCard({
 												<input
 													id={`env-${key}`}
 													type="text"
-													placeholder={
-														"Paste your key here"
-													}
+													placeholder={`Paste your ${key} here`}
 													className="input input-bordered w-full"
 													value={envValues[key] || ""}
 													onChange={(e) =>
@@ -114,7 +208,8 @@ export function MCPServerCard({
 									)}
 								</div>
 							</div>
-						)}
+						)
+					)}
 					{hasTerminalCommand ? (
 						<div className="bg-base-200 rounded-xl p-4 space-y-4">
 							<p className="text-sm text-gray-600">

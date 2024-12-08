@@ -59,7 +59,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		description:
 			"Access and manage local filesystem with specified allowed directories",
 		command: "npx",
-		args: ["-y", "@modelcontextprotocol/server-filesystem"],
+		args: ["-y", "@modelcontextprotocol/server-filesystem", "/Users/"],
 		terminalCommand: "",
 		docsUrl:
 			"https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
