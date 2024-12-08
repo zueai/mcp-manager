@@ -169,19 +169,25 @@ function App() {
 							</div>
 						)}
 				</div>
+				<div className="flex flex-col items-center mt-16 mb-8">
+					<a href="https://zue.ai" target="_blank" rel="noreferrer">
+						<div className="flex items-center justify-center rounded-2xl p-10 h-16 border-2 border-black/10 hover:bg-primary/20 transition-colors ease-in-out duration-300">
+							<img
+								src="/logo_zue.svg"
+								alt="zue.ai"
+								className="h-8"
+							/>
+						</div>
+					</a>
+				</div>
 				<div className="flex justify-center my-8">
 					<span className="text-sm text-center">
-						Made with ❤️ by{" "}
-						<a href="https://zue.ai" className="link">
-							zue.ai
-						</a>{" "}
-						- AI automation agency and product studio.
-						<br />
-						Contact us for AI automation solutions and product
-						development -{" "}
+						Made with ❤️ by zue -{" "}
 						<a href="mailto:hi@zue.ai" className="link">
-							hi@zue.ai
-						</a>
+							Contact us
+						</a>{" "}
+						for AI automation solutions and custom software
+						development.
 						<br />
 						This project is not affiliated with Anthropic. All logos
 						are trademarks of their respective owners.

@@ -21,7 +21,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		description: "Search the web with Brave Search API",
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search/README.md",
 		command: "npx",
 		args: ["-y", "@modelcontextprotocol/server-brave-search"],
 		env: { BRAVE_API_KEY: "" }
@@ -39,7 +39,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		},
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/aws-kb-retrieval"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/aws-kb-retrieval/README.md"
 	},
 
 	everart: {
@@ -51,7 +51,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		env: { EVERART_API_KEY: "" },
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/everart"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/everart/README.md"
 	},
 
 	filesystem: {
@@ -62,7 +62,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		args: ["-y", "@modelcontextprotocol/server-filesystem", "/Users/"],
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem/README.md"
 	},
 
 	github: {
@@ -99,7 +99,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		env: { GOOGLE_MAPS_API_KEY: "" },
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps/README.md"
 	},
 
 	memory: {
@@ -110,7 +110,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		args: ["-y", "@modelcontextprotocol/server-memory"],
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/memory"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/memory/README.md"
 	},
 
 	postgres: {
@@ -124,7 +124,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		],
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/postgres"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/postgres/README.md"
 	},
 
 	puppeteer: {
@@ -134,7 +134,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		args: ["-y", "@modelcontextprotocol/server-puppeteer"],
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer/README.md"
 	},
 
 	"sequential-thinking": {
@@ -145,7 +145,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		args: ["-y", "@modelcontextprotocol/server-sequential-thinking"],
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking/README.md"
 	},
 
 	slack: {
@@ -160,7 +160,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		},
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/slack"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/slack/README.md"
 	},
 
 	sqlite: {
@@ -177,6 +177,6 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		],
 		terminalCommand: "",
 		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite"
+			"https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite/README.md"
 	}
 }
