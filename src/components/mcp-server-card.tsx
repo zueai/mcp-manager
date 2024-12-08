@@ -7,17 +7,13 @@ import { useState } from "react"
 type MCPServerConfig = {
 	command: string
 	args: string[]
+	env?: Record<string, string>
 }
 
 type MCPServerCardProps = {
 	serverName: string
 	config: MCPServerConfig
 	icon?: string
-	variables?: {
-		name: string
-		value: string
-		argIndex: number
-	}[]
 	onUpdate: (name: string, newConfig: MCPServerConfig) => void
 	onDelete: (name: string) => void
 }
@@ -26,32 +22,19 @@ export function MCPServerCard({
 	serverName,
 	config,
 	icon,
-	variables,
 	onUpdate,
 	onDelete
 }: MCPServerCardProps) {
-	const [values, setValues] = useState<Record<string, string>>(() => {
-		if (!variables) return {}
-		const initialValues: Record<string, string> = {}
-		for (const v of variables) {
-			initialValues[v.name] = v.value
-		}
-		return initialValues
-	})
+	const [envValues, setEnvValues] = useState<Record<string, string>>({})
 
-	const handleVariableChange = (
-		name: string,
-		value: string,
-		_argIndex: number
-	) => {
-		setValues((prev) => ({ ...prev, [name]: value }))
+	const handleEnvChange = (key: string, value: string) => {
+		setEnvValues((prev) => ({ ...prev, [key]: value }))
 
-		// Update parent immediately
-		const newConfig = { ...config }
-		if (variables) {
-			for (const v of variables) {
-				newConfig.args[v.argIndex] =
-					v.name === name ? value : values[v.name]
+		const newConfig = {
+			...config,
+			env: {
+				...(config.env || {}),
+				[key]: value
 			}
 		}
 		onUpdate(serverName, newConfig)
@@ -93,6 +76,45 @@ export function MCPServerCard({
 					</div>
 				</div>
 				<div className="collapse-content">
+					{serverConfig?.env &&
+						Object.keys(serverConfig.env).length > 0 && (
+							<div className="bg-base-200 rounded-xl p-4 mb-4 space-y-4">
+								<div className="space-y-2">
+									{Object.entries(serverConfig.env).map(
+										([key]) => (
+											<div
+												key={key}
+												className="form-control"
+											>
+												<label
+													htmlFor={`env-${key}`}
+													className="label"
+												>
+													<span className="label-text mb-2">
+														{key}
+													</span>
+												</label>
+												<input
+													id={`env-${key}`}
+													type="text"
+													placeholder={
+														"Paste your key here"
+													}
+													className="input input-bordered w-full"
+													value={envValues[key] || ""}
+													onChange={(e) =>
+														handleEnvChange(
+															key,
+															e.target.value
+														)
+													}
+												/>
+											</div>
+										)
+									)}
+								</div>
+							</div>
+						)}
 					{hasTerminalCommand ? (
 						<div className="bg-base-200 rounded-xl p-4 space-y-4">
 							<p className="text-sm text-gray-600">
@@ -101,46 +123,10 @@ export function MCPServerCard({
 								server.
 							</p>
 							<TerminalCommand
-								command={serverConfig?.terminalCommand}
+								command={serverConfig?.terminalCommand ?? ""}
 							/>
 						</div>
-					) : (
-						variables && (
-							<div className="bg-base-200 rounded-xl p-4">
-								<div className="space-y-4">
-									{variables.map((variable) => (
-										<div
-											key={variable.name}
-											className="form-control"
-										>
-											<label
-												className="label"
-												htmlFor={`${serverName}-${variable.name}`}
-											>
-												<span className="label-text">
-													{variable.name}
-												</span>
-											</label>
-											<input
-												id={`${serverName}-${variable.name}`}
-												type="text"
-												value={values[variable.name]}
-												onChange={(e) =>
-													handleVariableChange(
-														variable.name,
-														e.target.value,
-														variable.argIndex
-													)
-												}
-												className="input input-bordered w-full"
-												placeholder={`Enter ${capitalizeFirstLetter(serverName)} ${variable.name}`}
-											/>
-										</div>
-									))}
-								</div>
-							</div>
-						)
-					)}
+					) : null}
 				</div>
 				<div className="flex justify-end">
 					<div className="flex gap-2 mb-4 mr-2">

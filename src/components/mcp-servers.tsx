@@ -30,8 +30,6 @@ export function MCPServers({
 	onServerAdd,
 	onServerRemove
 }: MCPServersProps) {
-	const [hasChanges, setHasChanges] = useState(false)
-
 	const handleServerUpdate = (name: string, newConfig: MCPServer) => {
 		const updatedContent = {
 			...jsonContent,
@@ -40,7 +38,6 @@ export function MCPServers({
 				[name]: newConfig
 			}
 		}
-		setHasChanges(true)
 		onUpdate(updatedContent)
 	}
 
@@ -74,16 +71,6 @@ export function MCPServers({
 						<span>Add Server</span>
 					</button>
 				</div>
-				{hasChanges && (
-					<button
-						type="button"
-						onClick={() => setHasChanges(false)}
-						className="btn btn-outline btn-sm"
-					>
-						<Save className="w-4 h-4" />
-						<span className="ml-2">Save All Changes</span>
-					</button>
-				)}
 			</div>
 
 			<dialog id="add_server_modal" className="modal backdrop-blur-sm">
@@ -169,12 +156,6 @@ export function MCPServers({
 									serverName={name}
 									config={config}
 									icon={serverConfig?.icon}
-									variables={serverConfig?.variables?.map(
-										(v) => ({
-											...v,
-											value: config.args[v.argIndex] || ""
-										})
-									)}
 									onUpdate={handleServerUpdate}
 									onDelete={handleServerDelete}
 								/>

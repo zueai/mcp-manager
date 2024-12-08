@@ -30,7 +30,12 @@ export function ApplyingInstructions({
 						<div className="space-y-4">
 							<div>
 								<h3 className="text-lg font-tiempos-regular mb-4">
-									Step 1: Run these terminal commands
+									Step 1: Run{" "}
+									{terminalServers.length >= 1
+										? "these"
+										: "this"}{" "}
+									terminal command
+									{terminalServers.length >= 1 ? "s" : ""}
 								</h3>
 
 								{Object.keys(jsonContent.mcpServers).length >
@@ -58,7 +63,8 @@ export function ApplyingInstructions({
 										<div key={serverType} className="mt-4">
 											<TerminalCommand
 												command={
-													serverConfig.terminalCommand
+													serverConfig.terminalCommand ??
+													""
 												}
 											/>
 										</div>
