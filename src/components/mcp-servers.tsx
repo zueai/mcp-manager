@@ -1,5 +1,5 @@
 import { MCPServerCard } from "@/components/mcp-server-card"
-import { SERVER_CONFIGS } from "@/config/server-configs"
+import { SERVER_CONFIGS } from "@/server-configs"
 import { capitalizeFirstLetter } from "@/utils"
 import { Plus, Save, X } from "lucide-react"
 import { useState } from "react"

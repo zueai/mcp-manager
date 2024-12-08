@@ -1,5 +1,5 @@
 import { TerminalCommand } from "@/components/terminal-command"
-import { SERVER_CONFIGS } from "@/config/server-configs"
+import { SERVER_CONFIGS } from "@/server-configs"
 import { capitalizeFirstLetter } from "@/utils"
 import { ArrowUpRight, Trash2 } from "lucide-react"
 import { useState } from "react"
