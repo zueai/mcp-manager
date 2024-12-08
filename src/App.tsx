@@ -77,7 +77,7 @@ function App() {
 
 	return (
 		<div className="container mx-auto p-4 max-w-3xl">
-			<h1 className="text-3xl font-bold text-center mb-8">
+			<h1 className="text-3xl font-bold text-center m-8">
 				MCP Manager for Claude Desktop
 			</h1>
 
@@ -85,15 +85,11 @@ function App() {
 				<div className="join join-vertical w-full">
 					<div className="collapse collapse-arrow join-item border border-base-300">
 						<input type="checkbox" defaultChecked />
-						<div className="collapse-title text-xl font-medium">
+						<h2 className="collapse-title text-xl font-medium">
 							Instructions to load your config file
-						</div>
+						</h2>
 						<div className="collapse-content">
 							<div className="prose">
-								<h2 className="text-xl font-semibold mb-4">
-									How to use:
-								</h2>
-
 								<div className="space-y-6">
 									<div className="bg-base-200 rounded-lg p-4">
 										<div>
@@ -182,8 +178,8 @@ function App() {
 									<div className="bg-base-200 rounded-lg p-4">
 										<div className="prose">
 											<h3 className="text-lg font-semibold">
-												Step 3: Add/modify/delete MCP
-												servers below.
+												Step 3: Edit your MCP servers
+												below!
 											</h3>
 										</div>
 									</div>
