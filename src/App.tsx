@@ -97,18 +97,10 @@ function App() {
 
 				<div className="flex justify-center">
 					<span className="text-md text-center mb-8">
-						This is a simple, web-based GUI to help you manage MCP
-						servers for your Claude Desktop App.
-						<br />
-						<br />
-						With MCP, you can give Claude access to private data
-						sources, APIs, and other services so it can answer
-						questions and perform actions on your behalf. This app
-						runs entirely client-side in your browser. No data is
-						stored or sent to any servers.
-						<br />
-						<br />
-						Learn more about MCP{" "}
+						Give Claude access to private data, APIs, and other
+						services so it can answer questions and perform actions
+						on your behalf using the Model Context Protocol. Learn
+						more about MCP{" "}
 						<a
 							href="https://modelcontextprotocol.io"
 							className="link"
@@ -127,6 +119,12 @@ function App() {
 							here
 						</a>
 						.
+						<br />
+						<br />
+						This is a simple, web-based GUI to help you manage MCP
+						servers in your Claude App - no data is stored or sent
+						to any servers because this app is running entirely
+						client-side in your browser.
 					</span>
 				</div>
 
