@@ -1,0 +1,13 @@
+this is a simple react and beat project that allows users to manage a JSON file on their computer without actually having to open an editor so it's going to give them a nice experience.
+
+the file path is " ~/Library/Application\ Support/Claude/claude_desktop_config.json"
+
+styling is done with tailwindcss and daisyui whenever possible
+
+never use "any" as a type
+
+always add the type=button property to buttons
+
+always use bun over npm for this project
+
+JSX elements without children should be marked as self-closing
