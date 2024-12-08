@@ -20,19 +20,19 @@ export function LoadingInstructions({
 
 	return (
 		<div className="join join-vertical w-full">
-			<div className="collapse collapse-arrow join-item border border-base-300 bg-white">
+			<div className="collapse collapse-arrow join-item border border-base-300 bg-white p-4">
 				<input
 					type="checkbox"
 					checked={isOpen}
 					onChange={(e) => onOpenChange(e.target.checked)}
 				/>
-				<h2 className="collapse-title text-xl">
+				<h2 className="collapse-title text-xl my-4">
 					Instructions to load your config file (MacOS)
 				</h2>
 				<div className="collapse-content">
 					<div className="prose">
 						<div className="space-y-6">
-							<div className="bg-base-200 rounded-lg p-4">
+							<div className="bg-base-200 rounded-xl p-4">
 								<div>
 									<h3 className="text-md font-tiempos-regular mb-4">
 										Step 1: Run this terminal command to
@@ -42,7 +42,7 @@ export function LoadingInstructions({
 								</div>
 							</div>
 
-							<div className="bg-base-200 rounded-lg p-4">
+							<div className="bg-base-200 rounded-xl p-4">
 								<div>
 									<h3 className="text-lg font-tiempos-regular mb-4">
 										Step 2: Paste the copied content below.

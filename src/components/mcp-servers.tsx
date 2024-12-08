@@ -110,7 +110,7 @@ export function MCPServers({
 							<button
 								key={serverType}
 								type="button"
-								className="w-full bg-base-200 hover:bg-base-300 rounded-lg p-4 flex items-start gap-6"
+								className="w-full bg-base-200 hover:bg-base-300 rounded-xl p-4 flex items-start gap-6"
 								onClick={() => {
 									handleAddServer(
 										serverType as keyof typeof SERVER_CONFIGS

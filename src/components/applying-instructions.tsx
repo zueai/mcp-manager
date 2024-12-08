@@ -20,13 +20,13 @@ export function ApplyingInstructions({
 }: ApplyingInstructionsProps) {
 	return (
 		<div className="join join-vertical w-full">
-			<div className="collapse collapse-arrow join-item border border-base-300 bg-white mb-16">
+			<div className="collapse collapse-arrow join-item border border-base-300 bg-white mb-16 p-4">
 				<input type="checkbox" />
-				<h2 className="collapse-title text-xl font-tiempos-regular">
+				<h2 className="collapse-title text-xl font-tiempos-regular my-4">
 					Apply your changes
 				</h2>
 				<div className="collapse-content">
-					<div className="bg-base-200 rounded-lg p-4">
+					<div className="bg-base-200 rounded-xl p-4">
 						<div className="space-y-4">
 							<div>
 								<h3 className="text-lg font-tiempos-regular mb-4">
@@ -67,7 +67,7 @@ export function ApplyingInstructions({
 							</div>
 						</div>
 					</div>
-					<div className="bg-base-200 rounded-lg p-4 mt-4">
+					<div className="bg-base-200 rounded-xl p-4 mt-4">
 						<h3 className="text-lg font-tiempos-regular">
 							Step 2: Restart Claude.app
 						</h3>

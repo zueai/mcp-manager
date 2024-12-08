@@ -81,7 +81,7 @@ export function MCPServerCard({
 				</div>
 				<div className="collapse-content">
 					{hasTerminalCommand ? (
-						<div className="bg-base-200 rounded-lg p-4 space-y-4">
+						<div className="bg-base-200 rounded-xl p-4 space-y-4">
 							<p className="text-sm text-gray-600">
 								MCP Manager can't update this server directly,
 								please run this terminal command to modify this
@@ -93,7 +93,7 @@ export function MCPServerCard({
 						</div>
 					) : (
 						variables && (
-							<div className="bg-base-200 rounded-lg p-4">
+							<div className="bg-base-200 rounded-xl p-4">
 								<div className="space-y-4">
 									{variables.map((variable) => (
 										<div
@@ -136,7 +136,7 @@ export function MCPServerCard({
 							onClick={() =>
 								window.open(serverConfig?.docsUrl, "_blank")
 							}
-							className="btn btn-sm btn-outline"
+							className="btn btn-sm btn-secondary"
 						>
 							<ArrowUpRight className="w-4 h-4" />
 							<span>Docs</span>
@@ -146,7 +146,7 @@ export function MCPServerCard({
 						<button
 							type="button"
 							onClick={handleDelete}
-							className="btn btn-sm bg-red-100 hover:bg-red-200"
+							className="btn btn-sm bg-red-50 hover:bg-red-100"
 						>
 							<Trash2 className="w-4 h-4" />
 							<span>Delete</span>

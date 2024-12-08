@@ -19,7 +19,7 @@ export function TerminalCommand({
 	}
 
 	return (
-		<div className={`bg-base-300 rounded-lg p-4 mb-4 ${className}`}>
+		<div className={`bg-base-300 rounded-xl p-4 mb-4 ${className}`}>
 			<p className="font-mono text-sm mb-4 break-all">{command}</p>
 			<button
 				type="button"
