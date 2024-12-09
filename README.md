@@ -2,6 +2,8 @@
 
 A simple web GUI to manage Model Context Protocol (MCP) servers for the Claude Desktop application easily. This application allows you to easily configure, install, and manage various MCP servers that extend Claude's capabilities.
 
+![MCP Manager for Claude Desktop](https://assets.zue.ai/mcp-manager-hero.png)
+
 ## What is MCP?
 
 The Model Context Protocol (MCP) enables Claude to access private data, APIs, and other services to answer questions and perform actions on your behalf. Learn more about MCP at:
