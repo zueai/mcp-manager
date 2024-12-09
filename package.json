@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "bun check && vite --port 7777",
-		"build": "tsc -b && vite build",
+		"build": "bun check && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"check": "tsc --noEmit && biome check --write ."

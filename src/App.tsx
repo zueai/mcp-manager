@@ -14,7 +14,6 @@ function App() {
 	}>({
 		mcpServers: {}
 	})
-	const [terminalServers, setTerminalServers] = useState<string[]>([])
 	const [uploadStatus, setUploadStatus] = useState<
 		"idle" | "success" | "error"
 	>("idle")
@@ -35,32 +34,23 @@ function App() {
 	const handleServerAdd = (serverType: keyof typeof SERVER_CONFIGS) => {
 		const serverConfig = SERVER_CONFIGS[serverType]
 
-		if (serverConfig.terminalCommand) {
-			setTerminalServers((prev) => [...prev, serverType])
-		} else {
-			// Ensure we only add servers with required properties
-			const newServer = {
-				command: serverConfig.command as string,
-				args: serverConfig.args as string[],
-				...(serverConfig.env && { env: serverConfig.env })
-			}
-
-			setJsonContent({
-				...jsonContent,
-				mcpServers: {
-					...jsonContent.mcpServers,
-					[serverType]: newServer
-				}
-			})
+		// Ensure we only add servers with required properties
+		const newServer = {
+			command: serverConfig.command as string,
+			args: serverConfig.args as string[],
+			...(serverConfig.env && { env: serverConfig.env })
 		}
+
+		setJsonContent({
+			...jsonContent,
+			mcpServers: {
+				...jsonContent.mcpServers,
+				[serverType]: newServer
+			}
+		})
 	}
 
 	const handleServerRemove = (serverType: string) => {
-		// Remove from terminalServers if present
-		if (terminalServers.includes(serverType)) {
-			setTerminalServers((prev) => prev.filter((s) => s !== serverType))
-		}
-
 		// Remove from mcpServers if present
 		if (jsonContent.mcpServers[serverType]) {
 			const { [serverType]: _, ...rest } = jsonContent.mcpServers
@@ -140,28 +130,26 @@ function App() {
 						uploadStatus === "success" && (
 							<div className="space-y-6">
 								<MCPServers
-									jsonContent={
-										jsonContent as {
-											mcpServers: Record<
+									jsonContent={{
+										mcpServers:
+											jsonContent.mcpServers as Record<
 												string,
 												{
 													command: string
 													args: string[]
+													env?: Record<string, string>
 												}
 											>
-										}
-									}
+									}}
 									onUpdate={setJsonContent}
 									onServerAdd={handleServerAdd}
 									onServerRemove={handleServerRemove}
 								/>
 
-								{(Object.keys(jsonContent.mcpServers).length >
-									0 ||
-									terminalServers.length > 0) && (
+								{Object.keys(jsonContent.mcpServers).length >
+									0 && (
 									<ApplyingInstructions
 										jsonContent={jsonContent}
-										terminalServers={terminalServers}
 									/>
 								)}
 							</div>

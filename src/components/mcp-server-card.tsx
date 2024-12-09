@@ -76,7 +76,6 @@ export function MCPServerCard({
 
 	const serverConfig =
 		SERVER_CONFIGS[serverName as keyof typeof SERVER_CONFIGS]
-	const hasTerminalCommand = Boolean(serverConfig?.terminalCommand)
 	const isFilesystemServer = serverName === "filesystem"
 	const isPostgresServer = serverName === "postgres"
 	const isSqliteServer = serverName === "sqlite"
@@ -130,7 +129,8 @@ export function MCPServerCard({
 						/>
 					) : null}
 
-					{hasTerminalCommand && (
+					{serverConfig?.docsUrl ===
+						"https://github.com/cloudflare/mcp-server-cloudflare" && (
 						<div className="bg-base-200 rounded-xl p-4 space-y-4">
 							<p className="text-sm text-gray-600">
 								MCP Manager can't update this server directly,
@@ -138,7 +138,9 @@ export function MCPServerCard({
 								server.
 							</p>
 							<TerminalCommand
-								command={serverConfig?.terminalCommand ?? ""}
+								command={
+									serverConfig?.setupCommands?.command ?? ""
+								}
 							/>
 						</div>
 					)}

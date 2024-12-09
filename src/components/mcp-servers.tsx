@@ -2,7 +2,6 @@ import { MCPServerCard } from "@/components/mcp-server-card"
 import { SERVER_CONFIGS } from "@/server-configs"
 import { capitalizeFirstLetter } from "@/utils"
 import { Plus, Save, X } from "lucide-react"
-import { useState } from "react"
 
 type MCPServer = {
 	command: string
@@ -43,10 +42,6 @@ export function MCPServers({
 
 	const handleServerDelete = (name: string) => {
 		onServerRemove(name)
-	}
-
-	const handleAddServer = (serverType: keyof typeof SERVER_CONFIGS) => {
-		onServerAdd(serverType)
 	}
 
 	const hasServers = Object.keys(jsonContent.mcpServers).length > 0
@@ -99,7 +94,7 @@ export function MCPServers({
 								type="button"
 								className="w-full bg-base-200 hover:bg-base-300 rounded-xl p-4 flex items-start gap-6"
 								onClick={() => {
-									handleAddServer(
+									onServerAdd(
 										serverType as keyof typeof SERVER_CONFIGS
 									)
 									;(
@@ -120,7 +115,7 @@ export function MCPServers({
 										className="w-12 h-12 object-contain"
 									/>
 								</div>
-								<div className="flex flex-col text-left">
+								<div className="flex flex-col text-left w-full">
 									<span className="text-xl font-normal mb-1">
 										{capitalizeFirstLetter(serverType)}
 									</span>
