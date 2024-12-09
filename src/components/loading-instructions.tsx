@@ -27,7 +27,7 @@ export function LoadingInstructions({
 					onChange={(e) => onOpenChange(e.target.checked)}
 				/>
 				<h2 className="collapse-title text-xl my-4">
-					Instructions to load your config file (MacOS)
+					MacOS Instructions
 				</h2>
 				<div className="collapse-content">
 					<div className="prose">
@@ -36,8 +36,10 @@ export function LoadingInstructions({
 								<div>
 									<h3 className="text-lg font-tiempos-regular mb-4">
 										Step 1: Run this terminal command to
-										copy your current config to your
-										clipboard
+										copy your current MCP config to the
+										clipboard. <br />
+										If you've never used MCP before, this
+										will create a blank config file.
 									</h3>
 									<TerminalCommand command={command} />
 								</div>
