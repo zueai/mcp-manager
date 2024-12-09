@@ -179,7 +179,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		icon: "https://upload.wikimedia.org/wikipedia/commons/1/10/2023_Obsidian_logo.svg",
 		description: "Read and search files in your Obsidian vault",
 		command: "npx",
-		args: ["-y", "mcp-obsidian", "<path-to-your-vault>"],
+		args: ["-y", "mcp-obsidian", ""],
 
 		docsUrl: "https://github.com/calclavia/mcp-obsidian"
 	},
@@ -252,7 +252,6 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		docsUrl:
 			"https://github.com/modelcontextprotocol/servers/blob/main/src/gitlab/README.md"
 	},
-
 	postgres: {
 		icon: "https://www.svgrepo.com/show/303301/postgresql-logo.svg",
 		description: "Connect and interact with PostgreSQL databases",

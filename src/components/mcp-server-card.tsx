@@ -1,5 +1,6 @@
 import { EnvConfig } from "@/components/server-configs/env-config"
 import { FilesystemConfig } from "@/components/server-configs/filesystem-config"
+import { ObsidianConfig } from "@/components/server-configs/obsidian-config"
 import { PostgresConfig } from "@/components/server-configs/postgres-config"
 import { SQLiteConfig } from "@/components/server-configs/sqlite-config"
 import { TerminalCommand } from "@/components/terminal-command"
@@ -69,6 +70,14 @@ export function MCPServerCard({
 		onUpdate(serverName, newConfig)
 	}
 
+	const handleObsidianUpdate = (path: string) => {
+		const newConfig = {
+			...config,
+			args: [...config.args.slice(0, 2), path]
+		}
+		onUpdate(serverName, newConfig)
+	}
+
 	const handleDelete = (e: React.MouseEvent) => {
 		e.stopPropagation()
 		onDelete(serverName)
@@ -79,6 +88,7 @@ export function MCPServerCard({
 	const isFilesystemServer = serverName === "filesystem"
 	const isPostgresServer = serverName === "postgres"
 	const isSqliteServer = serverName === "sqlite"
+	const isObsidianServer = serverName === "obsidian"
 	const iconUrl = icon || serverConfig?.icon
 
 	return (
@@ -119,6 +129,13 @@ export function MCPServerCard({
 						<SQLiteConfig
 							initialPath={config.args[5] || "~/test.db"}
 							onUpdate={handleSqliteUpdate}
+						/>
+					) : isObsidianServer ? (
+						<ObsidianConfig
+							initialPath={
+								config.args[2] || "~/Documents/MyVault"
+							}
+							onUpdate={handleObsidianUpdate}
 						/>
 					) : serverConfig?.env &&
 						Object.keys(serverConfig.env).length > 0 ? (
