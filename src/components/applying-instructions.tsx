@@ -64,35 +64,30 @@ export function ApplyingInstructions({
 				<div className="collapse-content space-y-4">
 					<div className="bg-base-200 rounded-xl p-4">
 						<h3 className="text-lg font-tiempos-regular">
-							Step 1: Install Node.js and uv (if not already
-							installed)
+							Step 1: Install Node.js and uv by running these
+							commands (if not already installed)
 						</h3>
 						<div className="space-y-4 mt-4">
-							<span className="pt-2 text-md">
-								- Install Node.js:{" "}
-								<a
-									href="https://nodejs.org/en/download/prebuilt-installer"
-									className="link link-primary"
-									target="_blank"
-									rel="noreferrer"
-								>
-									https://nodejs.org/en/download/prebuilt-installer
-								</a>
-							</span>
-							<br />
-							<br />
-							<span className="text-md pt-2">
-								- Install{" "}
-								<a
-									href="https://docs.astral.sh/uv"
-									target="_blank"
-									rel="noreferrer"
-								>
-									uv
-								</a>{" "}
-								by running this command:
-							</span>
-							<TerminalCommand command="curl -LsSf https://astral.sh/uv/install.sh | sh && source $HOME/.cargo/env && uv python install" />
+							<TerminalCommand
+								command={
+									'curl -fsSL https://fnm.vercel.app/install | bash && eval "$(fnm env --use-on-cd --shell zsh)" >> ~/.zshrc && source ~/.zshrc && fnm use --install-if-missing 22 && node -v'
+								}
+							/>
+							If the command above fails, install Node.js by
+							downloading the installer from{" "}
+							<a
+								href="https://nodejs.org/en/download/prebuilt-installer"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="link link-primary"
+							>
+								https://nodejs.org/en/download/prebuilt-installer
+							</a>
+							<TerminalCommand
+								command={
+									"curl -LsSf https://astral.sh/uv/install.sh | sh && source $HOME/.cargo/env && uv python install"
+								}
+							/>
 						</div>
 					</div>
 
