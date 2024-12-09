@@ -145,7 +145,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 				cd exa-mcp-server-main && \
 				npm install --save axios dotenv && \
 				npm run build && \
-				npm link"
+				sudo npm link"
 		},
 
 		docsUrl: "https://github.com/exa-labs/exa-mcp-server"

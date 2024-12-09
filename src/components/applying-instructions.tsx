@@ -92,7 +92,7 @@ export function ApplyingInstructions({
 								</a>{" "}
 								by running this command:
 							</span>
-							<TerminalCommand command="curl -LsSf https://astral.sh/uv/install.sh | sh && uv python install" />
+							<TerminalCommand command="curl -LsSf https://astral.sh/uv/install.sh | sh && source $HOME/.cargo/env && uv python install" />
 						</div>
 					</div>
 
