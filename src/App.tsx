@@ -170,7 +170,7 @@ function App() {
 					<span className="text-md text-center">
 						Made with ❤️ by zue. You can view the source code{" "}
 						<a
-							href="https://github.com/zue-ai/mcp-manager"
+							href="https://github.com/zueai/mcp-manager"
 							className="link"
 							target="_blank"
 							rel="noreferrer"
