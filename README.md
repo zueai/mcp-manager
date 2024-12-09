@@ -58,6 +58,7 @@ The Model Context Protocol (MCP) enables Claude to access private data, APIs, an
 
 ## Project Structure
 
+```plaintext
 src/
 ├── components/ # React components
 │ ├── server-configs/ # Server-specific configuration components
@@ -66,6 +67,7 @@ src/
 ├── App.tsx # Main application component
 ├── server-configs.ts # MCP server configurations
 └── utils.ts # Utility functions
+```
 
 ## Key Components
 
