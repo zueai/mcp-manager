@@ -33,15 +33,18 @@ export function LoadingInstructions({
 					<div className="prose">
 						<div className="space-y-6">
 							<div className="bg-base-200 rounded-xl p-4">
-								<div>
-									<h3 className="text-lg font-tiempos-regular mb-4">
+								<div className="space-y-4">
+									<h3 className="text-lg font-tiempos-regular">
 										Step 1: Run this terminal command to
 										copy your current MCP config to the
-										clipboard. <br />
+										clipboard.
+									</h3>
+									<p className="text-sm opacity-80">
 										If you've never used MCP before, this
 										will create a blank config file and copy
 										its contents.
-									</h3>
+									</p>
+
 									<TerminalCommand command={command} />
 								</div>
 							</div>
