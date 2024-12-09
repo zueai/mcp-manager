@@ -120,7 +120,8 @@ MIT
 
 ---
 
-Made with ❤️ by [zue](https://zue.ai).
+<center>
+Made with ❤️ by <a href="https://zue.ai">zue</a>.
 
 [Contact us](https://zue.ai/talk-to-us) for custom AI automation solutions and product development.
 
@@ -128,5 +129,6 @@ Made with ❤️ by [zue](https://zue.ai).
 <br />
 <br />
 <a href="https://zue.ai">
-<img src="https://assets.zue.ai/logo_zue_yellow.svg" alt="zue logo" width="200" height="auto" />
+<img src="https://assets.zue.ai/logo_zue_yellow.svg" alt="zue logo" width="200" height="auto" style="display: block; margin: 0 auto;" />
 </a>
+</center>
