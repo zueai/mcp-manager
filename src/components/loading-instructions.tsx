@@ -25,6 +25,7 @@ export function LoadingInstructions({
 					type="checkbox"
 					checked={isOpen}
 					onChange={(e) => onOpenChange(e.target.checked)}
+					aria-label="MacOS Instructions"
 				/>
 				<h2 className="collapse-title text-xl my-4">
 					MacOS Instructions

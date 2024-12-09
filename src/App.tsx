@@ -89,32 +89,36 @@ function App() {
 					<span className="text-md text-center mb-8">
 						Give Claude access to private data, APIs, and other
 						services using the Model Context Protocol so it can
-						answer questions and perform actions on your behalf.
-						Learn more about MCP{" "}
+						answer questions and perform actions on your behalf.{" "}
+						<br />
+						<br />
+						In a nutshell, MCP servers are like plugins that give
+						Claude (the "client") prompts, resources, and tools to
+						perform actions on your behalf.{" "}
 						<a
 							href="https://modelcontextprotocol.io"
 							className="link"
 							target="_blank"
 							rel="noreferrer"
 						>
-							here
+							Read the MCP docs
 						</a>{" "}
-						and{" "}
+						or check out{" "}
 						<a
 							href="https://www.anthropic.com/news/model-context-protocol"
 							className="link"
 							target="_blank"
 							rel="noreferrer"
 						>
-							here
-						</a>
-						.
+							Anthropic's announcement
+						</a>{" "}
+						to learn more.
 						<br />
 						<br />
-						This is a simple, web-based GUI to help you manage MCP
-						servers in your Claude App - this app is running
-						entirely client-side in your browser so your data never
-						leaves your computer.
+						This is a simple, web-based GUI to help you install and
+						manage MCP servers in your Claude App. <br />
+						This runs client-side in your browser so your data will
+						never leave your computer.
 					</span>
 				</div>
 
