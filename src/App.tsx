@@ -172,14 +172,14 @@ function App() {
 				</div>
 				<div className="flex justify-center my-8 flex-col">
 					<span className="text-md text-center">
-						Made with ❤️ by zue. View the{" "}
+						Made with ❤️ by zue. You can view the{" "}
 						<a
 							href="https://github.com/zueai/mcp-manager"
 							className="link"
 							target="_blank"
 							rel="noreferrer"
 						>
-							MCP Manager source code on GitHub
+							source code on GitHub
 						</a>
 						.
 						<br />
