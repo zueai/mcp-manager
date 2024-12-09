@@ -94,14 +94,14 @@ function App() {
 						<br />
 						In a nutshell, MCP servers are like plugins that give
 						Claude (the "client") prompts, resources, and tools to
-						perform actions on your behalf.{" "}
+						perform actions on your behalf. Read the{" "}
 						<a
 							href="https://modelcontextprotocol.io"
 							className="link"
 							target="_blank"
 							rel="noreferrer"
 						>
-							Read the MCP docs
+							MCP docs
 						</a>{" "}
 						or check out{" "}
 						<a
