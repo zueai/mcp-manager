@@ -38,9 +38,9 @@ export function ApplyingInstructions({
 					if (arg.includes("index.js")) {
 						switch (serverType) {
 							case "exa":
-								return "$HOME_DIR/exa-mcp-server-main/build/index.js"
+								return "$HOME_DIR/mcp-servers/exa-mcp-server-main/build/index.js"
 							case "browserbase":
-								return "$HOME_DIR/mcp-server-browserbase-main/browserbase/build/index.js"
+								return "$HOME_DIR/mcp-servers/mcp-server-browserbase-main/browserbase/dist/index.js"
 							default:
 								return arg
 						}
@@ -91,7 +91,7 @@ export function ApplyingInstructions({
 								</a>{" "}
 								by running this command:
 							</span>
-							<TerminalCommand command="curl -LsSf https://astral.sh/uv/install.sh | sh" />
+							<TerminalCommand command="curl -LsSf https://astral.sh/uv/install.sh | sh && uv python install" />
 						</div>
 					</div>
 

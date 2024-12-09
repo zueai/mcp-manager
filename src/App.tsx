@@ -32,6 +32,10 @@ function App() {
 	}
 
 	const handleServerAdd = (serverType: keyof typeof SERVER_CONFIGS) => {
+		if (serverType === "cloudflare") {
+			// Do not add Cloudflare to the JSON config
+			return
+		}
 		const serverConfig = SERVER_CONFIGS[serverType]
 
 		// Ensure we only add servers with required properties

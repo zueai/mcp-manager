@@ -155,7 +155,7 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		icon: "https://opensourcepledge.com/images/members/browserbase/logo.webp",
 		description: "Let Claude explore the web with Browserbase",
 		command: "node",
-		args: ["browserbase-mcp-server/build/index.js"],
+		args: ["mcp-server-browserbase-main/browserbase/dist/index.js"],
 		env: {
 			BROWSERBASE_API_KEY: "your-api-key-here",
 			BROWSERBASE_PROJECT_ID: "your-project-id-here"

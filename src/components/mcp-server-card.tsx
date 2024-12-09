@@ -2,6 +2,7 @@ import { EnvConfig } from "@/components/server-configs/env-config"
 import { FilesystemConfig } from "@/components/server-configs/filesystem-config"
 import { ObsidianConfig } from "@/components/server-configs/obsidian-config"
 import { PostgresConfig } from "@/components/server-configs/postgres-config"
+import { SentryConfig } from "@/components/server-configs/sentry-config"
 import { SQLiteConfig } from "@/components/server-configs/sqlite-config"
 import { TerminalCommand } from "@/components/terminal-command"
 import { SERVER_CONFIGS } from "@/server-configs"
@@ -78,6 +79,14 @@ export function MCPServerCard({
 		onUpdate(serverName, newConfig)
 	}
 
+	const handleSentryUpdate = (token: string) => {
+		const newConfig = {
+			...config,
+			args: [...config.args.slice(0, 2), token]
+		}
+		onUpdate(serverName, newConfig)
+	}
+
 	const handleDelete = (e: React.MouseEvent) => {
 		e.stopPropagation()
 		onDelete(serverName)
@@ -89,6 +98,7 @@ export function MCPServerCard({
 	const isPostgresServer = serverName === "postgres"
 	const isSqliteServer = serverName === "sqlite"
 	const isObsidianServer = serverName === "obsidian"
+	const isSentryServer = serverName === "sentry"
 	const iconUrl = icon || serverConfig?.icon
 
 	return (
@@ -120,28 +130,29 @@ export function MCPServerCard({
 						/>
 					) : isPostgresServer ? (
 						<PostgresConfig
-							initialUrl={
-								config.args[2] || "postgresql://localhost/mydb"
-							}
+							initialUrl={config.args[2]}
 							onUpdate={handlePostgresUpdate}
 						/>
 					) : isSqliteServer ? (
 						<SQLiteConfig
-							initialPath={config.args[5] || "~/test.db"}
+							initialPath={config.args[5]}
 							onUpdate={handleSqliteUpdate}
 						/>
 					) : isObsidianServer ? (
 						<ObsidianConfig
-							initialPath={
-								config.args[2] || "~/Documents/MyVault"
-							}
+							initialPath={config.args[2]}
 							onUpdate={handleObsidianUpdate}
+						/>
+					) : isSentryServer ? (
+						<SentryConfig
+							initialToken={config.args[2]}
+							onUpdate={handleSentryUpdate}
 						/>
 					) : serverConfig?.env &&
 						Object.keys(serverConfig.env).length > 0 ? (
 						<EnvConfig
 							env={serverConfig.env}
-							initialValues={{}}
+							initialValues={config.env || {}}
 							onUpdate={handleEnvUpdate}
 						/>
 					) : null}
