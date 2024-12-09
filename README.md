@@ -48,11 +48,7 @@ The Model Context Protocol (MCP) enables Claude to access private data, APIs, an
 - **Styling**:
   - TailwindCSS for utility-first CSS
   - DaisyUI for component styling
-  - Tiempos font to match the Anthropic Design Language
-- **Development Tools**:
-  - Biome for formatting and linting
-  - ESLint (came with the template and i never bothered to remove it :P)
-  - TypeScript for type safety
+  - Tiempos Font to match the Anthropic Design Language
 - **Package Manager**: Bun
 - **Deployment**: Cloudflare Pages
 
@@ -69,14 +65,6 @@ src/
 └── utils.ts # Utility functions
 ```
 
-## Key Components
-
-- **LoadingInstructions**: Guides users through loading their existing MCP configuration
-- **MCPServers**: Manages the list of configured servers
-- **MCPServerCard**: Reusable server configuration card
-- **ApplyingInstructions**: Provides steps to apply changes to Claude Desktop
-- **server-configs.ts**: has all the info for the servers
-
 ## Development
 
 1. Install dependencies:
@@ -85,7 +73,7 @@ src/
    bun install
    ```
 
-2. Start the development server:
+2. Start the dev server:
 
    ```bash
    bun dev
@@ -96,14 +84,6 @@ src/
    ```bash
    bun run build
    ```
-
-## Configuration
-
-The application manages the MCP configuration file located at:
-
-```plaintext
-~/Library/Application Support/Claude/claude_desktop_config.json
-```
 
 ## Contributing
 
