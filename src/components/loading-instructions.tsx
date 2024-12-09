@@ -39,7 +39,8 @@ export function LoadingInstructions({
 										copy your current MCP config to the
 										clipboard. <br />
 										If you've never used MCP before, this
-										will create a blank config file.
+										will create a blank config file and copy
+										its contents.
 									</h3>
 									<TerminalCommand command={command} />
 								</div>
