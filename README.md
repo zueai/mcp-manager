@@ -110,10 +110,23 @@ The application manages the MCP configuration file located at:
 Contributions are extremely welcome! Please open a PR with new MCP servers or any other improvements to the codebase.
 PS. I wasnt able to get fetch, time, and sentry working, if you can help me out, that would be great!
 
-## License
+## Disclaimer
 
 This project is not affiliated with Anthropic. All logos are trademarks of their respective owners.
 
+## License
+
+MIT
+
 ---
 
-Made with ❤️ by [zue](https://zue.ai). [Contact us](https://zue.ai/talk-to-us) for custom AI automation solutions and product development.
+Made with ❤️ by [zue](https://zue.ai).
+
+[Contact us](https://zue.ai/talk-to-us) for custom AI automation solutions and product development.
+
+<br />
+<br />
+<br />
+<a href="https://zue.ai">
+<img src="https://assets.zue.ai/logo_zue_purple.svg" alt="zue logo" width="200" height="auto" />
+</a>
