@@ -1,6 +1,6 @@
 # MCP Manager for Claude Desktop
 
-A simple web GUI to manage Model Context Protocol (MCP) servers for the Claude Desktop application easily. This application allows you to easily configure, install, and manage various MCP servers that extend Claude's capabilities.
+A simple web GUI to manage Model Context Protocol (MCP) servers for the Claude Desktop app on MacOS easily. Just follow the instructions and paste a few commands to give your Claude app instant superpowers.
 
 ![MCP Manager for Claude Desktop](https://assets.zue.ai/mcp-manager-hero.png)
 
@@ -15,14 +15,29 @@ The Model Context Protocol (MCP) enables Claude to access private data, APIs, an
 
 - 🚀 Easy-to-use interface for managing MCP servers
 - 🔒 Runs entirely client-side - your data never leaves your computer
-- ⚡️ Quick setup for popular MCP servers like:
-  - Google Drive
-  - Obsidian
-  - PostgreSQL
-  - SQLite
-  - GitHub
-  - GitLab
-  - And many more!
+- ⚡️ Quick setup for popular MCP servers:
+  - Apple Notes - Access and search your Apple Notes
+  - AWS Knowledge Base - Access and query AWS Knowledge Base for information retrieval
+  - Brave Search - Search the web with Brave Search API
+  - Browserbase - Let Claude explore the web with Browserbase
+  - Cloudflare - Manage your Cloudflare workers and account resources
+  - Everart - Interface with Everart API for digital art and design tools
+  - Exa - Search the web with Exa
+  - Filesystem - Access and manage local filesystem
+  - GitHub - Access your GitHub repositories
+  - GitLab - Manage GitLab repositories and resources
+  - Google Drive - Access and search files in your Google Drive
+  - Google Maps - Access Google Maps API for location services
+  - Memory - Give Claude memory of previous conversations
+  - Obsidian - Read and search files in your Obsidian vault
+  - Perplexity - Search the web with Perplexity API
+  - PostgreSQL - Connect and interact with PostgreSQL databases
+  - Puppeteer - Automate browser interactions
+  - Sequential Thinking - Enable step-by-step reasoning
+  - Slack - Access your Slack workspace
+  - SQLite - Manage SQLite databases
+  - Todoist - Access and search your Todoist tasks
+  - YouTube Transcript - Access and search YouTube transcripts
 - 🛠 Simple configuration of environment variables and server settings
 - 📋 One-click copying of terminal commands for installation
 
@@ -90,7 +105,8 @@ The application manages the MCP configuration file located at:
 
 ## Contributing
 
-Contributions are extremely welcome! Please open a PR with new MCP servers or any other improvements to the codebase
+Contributions are extremely welcome! Please open a PR with new MCP servers or any other improvements to the codebase.
+PS. I wasnt able to get fetch, time, and sentry working, if you can help me out, that would be great!
 
 ## License
 
