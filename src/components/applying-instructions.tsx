@@ -11,6 +11,7 @@ type RuntimeServerConfig = {
 type ApplyingInstructionsProps = {
 	jsonContent: {
 		mcpServers: Record<string, RuntimeServerConfig>
+		cloudflare?: unknown
 	}
 }
 
@@ -25,7 +26,7 @@ export function ApplyingInstructions({
 
 	// Helper function to modify the JSON content with absolute paths
 	const getJsonWithAbsolutePaths = () => {
-		const modifiedContent = { ...jsonContent }
+		const { cloudflare: _, ...modifiedContent } = jsonContent
 
 		for (const [serverType, config] of Object.entries(
 			modifiedContent.mcpServers

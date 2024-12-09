@@ -73,15 +73,14 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 		docsUrl:
 			"https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive/README.md"
 	},
-	time: {
-		icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNsb2NrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwb2x5bGluZSBwb2ludHM9IjEyIDYgMTIgMTIgMTYgMTQiLz48L3N2Zz4=",
-		description: "Current time / time zone conversion utilities",
-		command: "uvx",
-		args: ["mcp-server-time"],
-
-		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/time/README.md"
-	},
+	// time: {
+	// 	icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNsb2NrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwb2x5bGluZSBwb2ludHM9IjEyIDYgMTIgMTIgMTYgMTQiLz48L3N2Zz4=",
+	// 	description: "Current time / time zone conversion utilities",
+	// 	command: "uvx",
+	// 	args: ["mcp-server-time"],
+	// 	docsUrl:
+	// 		"https://github.com/modelcontextprotocol/servers/tree/main/src/time/README.md"
+	// },
 	"google-maps": {
 		icon: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Google_Maps_Logo_2020.svg",
 		description: "Access Google Maps API for location and mapping services",
@@ -111,15 +110,15 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 
 		docsUrl: "https://github.com/tanigami/mcp-server-perplexity"
 	},
-	"fetch-website": {
-		icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdsb2JlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0xMiAyYTE0LjUgMTQuNSAwIDAgMCAwIDIwIDE0LjUgMTQuNSAwIDAgMCAwLTIwIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=",
-		description: "Let Claude fetch and read a website",
-		command: "uvx",
-		args: ["mcp-server-fetch"],
+	// fetch: {
+	// 	icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdsb2JlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0xMiAyYTE0LjUgMTQuNSAwIDAgMCAwIDIwIDE0LjUgMTQuNSAwIDAgMCAwLTIwIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=",
+	// 	description: "Let Claude fetch and read a website",
+	// 	command: "uvx",
+	// 	args: ["mcp-server-fetch"],
 
-		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/fetch/README.md"
-	},
+	// 	docsUrl:
+	// 		"https://github.com/modelcontextprotocol/servers/tree/main/src/fetch/README.md"
+	// },
 	"apple-notes": {
 		icon: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_Notes_icon.svg",
 		description: "Access and search your Apple Notes",
@@ -289,14 +288,14 @@ export const SERVER_CONFIGS: Record<string, ServerConfig> = {
 
 		docsUrl:
 			"https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite/README.md"
-	},
-	sentry: {
-		icon: "https://www.svgrepo.com/show/306716/sentry.svg",
-		description: "Retrieve and analyze issues from Sentry for debugging",
-		command: "uvx",
-		args: ["mcp-server-sentry", "--auth-token", ""],
-
-		docsUrl:
-			"https://github.com/modelcontextprotocol/servers/tree/main/src/sentry"
 	}
+	// sentry: {
+	// 	icon: "https://www.svgrepo.com/show/306716/sentry.svg",
+	// 	description: "Retrieve and analyze issues from Sentry for debugging",
+	// 	command: "uvx",
+	// 	args: ["mcp-server-sentry", "--auth-token", ""],
+
+	// 	docsUrl:
+	// 		"https://github.com/modelcontextprotocol/servers/tree/main/src/sentry"
+	// }
 }
