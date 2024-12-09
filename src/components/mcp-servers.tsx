@@ -69,7 +69,7 @@ export function MCPServers({
 			</div>
 
 			<dialog id="add_server_modal" className="modal backdrop-blur-sm">
-				<div className="modal-box">
+				<div className="modal-box rounded-3xl">
 					<div className="flex justify-between items-center mb-4 sticky top-0 py-4 -mt-4 -mx-6 px-6">
 						<h3 className="text-xl ml-4">Add New Server</h3>
 						<button
@@ -92,7 +92,7 @@ export function MCPServers({
 							<button
 								key={serverType}
 								type="button"
-								className="w-full bg-base-200 hover:bg-base-300 rounded-xl p-4 flex items-start gap-6"
+								className="w-full bg-base-200 hover:bg-base-300 rounded-3xl p-4 flex items-center gap-6 h-24"
 								onClick={() => {
 									onServerAdd(
 										serverType as keyof typeof SERVER_CONFIGS
@@ -104,7 +104,7 @@ export function MCPServers({
 									)?.close()
 								}}
 							>
-								<div className="my-auto">
+								<div className="my-auto mx-2">
 									<img
 										src={
 											SERVER_CONFIGS[
@@ -112,7 +112,7 @@ export function MCPServers({
 											].icon
 										}
 										alt={`${serverType} icon`}
-										className="w-12 h-12 object-contain"
+										className="w-10 h-10 object-contain"
 									/>
 								</div>
 								<div className="flex flex-col text-left w-full">
