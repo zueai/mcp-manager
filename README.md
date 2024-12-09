@@ -128,5 +128,5 @@ Made with ❤️ by [zue](https://zue.ai).
 <br />
 <br />
 <a href="https://zue.ai">
-<img src="https://assets.zue.ai/logo_zue_purple.svg" alt="zue logo" width="200" height="auto" />
+<img src="https://assets.zue.ai/logo_zue_yellow.svg" alt="zue logo" width="200" height="auto" />
 </a>
