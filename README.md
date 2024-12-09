@@ -116,4 +116,4 @@ This project is not affiliated with Anthropic. All logos are trademarks of their
 
 ---
 
-Made with ❤️ by [zue](https://zue.ai)
+Made with ❤️ by [zue](https://zue.ai). [Contact us](https://zue.ai/talk-to-us) for custom AI automation solutions and product development.
