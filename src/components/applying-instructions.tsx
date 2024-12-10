@@ -70,7 +70,7 @@ export function ApplyingInstructions({
 						<div className="space-y-4 mt-4">
 							<TerminalCommand
 								command={
-									'curl -fsSL https://fnm.vercel.app/install | bash && `eval "$(fnm env --use-on-cd --shell zsh)" >> ~/.zshrc && source ~/.zshrc && fnm use --install-if-missing 22 && node -v'
+									'curl -fsSL https://fnm.vercel.app/install | bash && source ~/.zshrc && eval "$(fnm env --use-on-cd --shell zsh)" >> ~/.zshrc && source ~/.zshrc && fnm use --install-if-missing 22 && node -v'
 								}
 							/>
 							If the command above fails, install Node.js by
