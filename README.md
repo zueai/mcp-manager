@@ -1,6 +1,6 @@
-# MCP Manager for Claude Desktop
+<h1 align="center">MCP Manager for Claude Desktop</h1>
 
-A simple web GUI to manage Model Context Protocol (MCP) servers for the Claude Desktop app on MacOS easily. Just follow the instructions and paste a few commands to give your Claude app instant superpowers.
+<p align="center">A simple web GUI to manage Model Context Protocol (MCP) servers for the Claude Desktop app on MacOS easily. Just follow the instructions and paste a few commands to give your Claude app instant superpowers. </p>
 
 ![MCP Manager for Claude Desktop](https://assets.zue.ai/mcp-manager-hero.png)
 
@@ -99,16 +99,18 @@ This project is not affiliated with Anthropic. All logos are trademarks of their
 MIT
 
 ---
-
-<center>
-Made with ❤️ by <a href="https://zue.ai">zue</a>.
-
-[Contact us](https://zue.ai/talk-to-us) for custom AI automation solutions and product development.
-
-<br />
-<br />
-<br />
-<a href="https://zue.ai">
-<img src="https://assets.zue.ai/logo_zue_yellow.svg" alt="zue logo" width="200" height="auto" style="display: block; margin: 0 auto;" />
+<br/>
+<br/>
+<p align="center">
+<a href="https://zue.ai#gh-light-mode-only">
+  <img src="https://assets.zue.ai/logo_zue_purple.svg" alt="zue logo" width="200" height="auto" style="display: block; margin: 0 auto;" />
 </a>
-</center>
+<a href="https://zue.ai#gh-dark-mode-only">
+  <img src="https://assets.zue.ai/logo_zue_yellow.svg" alt="zue logo" width="200" height="auto" style="display: block; margin: 0 auto;" />
+</a>
+</p>
+
+<p align="center">
+<a href="https://zue.ai/talk-to-us">Contact us</a> for custom AI automation solutions and product development.
+</p>
+
