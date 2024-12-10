@@ -50,7 +50,7 @@ The Model Context Protocol (MCP) enables Claude to access private data, APIs, an
   - DaisyUI for component styling
   - Tiempos Font to match the Anthropic Design Language
 - **Package Manager**: Bun
-- **Deployment**: Cloudflare Pages
+- **Deployment**: Cloudflare Pages for <60s build times
 
 ## Project Structure
 
@@ -113,4 +113,3 @@ MIT
 <p align="center">
 <a href="https://zue.ai/talk-to-us">Contact us</a> for custom AI automation solutions and product development.
 </p>
-
