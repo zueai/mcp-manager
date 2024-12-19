@@ -125,7 +125,7 @@ export function MCPServerCard({
 				<div className="collapse-content">
 					{isFilesystemServer ? (
 						<FilesystemConfig
-							initialPaths={[config.args[2] || "/Users/"]}
+							initialPaths={config.args.slice(2)} // Changed from [config.args[2] || "/Users/"]
 							onUpdate={handleFilesystemUpdate}
 						/>
 					) : isPostgresServer ? (

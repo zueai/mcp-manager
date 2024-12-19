@@ -2,29 +2,75 @@ import { ApplyingInstructions } from "@/components/applying-instructions"
 import { LoadingInstructions } from "@/components/loading-instructions"
 import { MCPServers } from "@/components/mcp-servers"
 import { SERVER_CONFIGS } from "@/server-configs"
+import {
+	type MCPConfig,
+	checkForConfigFile,
+	validateServerConfig
+} from "@/utils"
 import type React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function App() {
-	const [jsonContent, setJsonContent] = useState<{
-		mcpServers: Record<
-			string,
-			{ command: string; args: string[]; env?: Record<string, string> }
-		>
-	}>({
+	const [jsonContent, setJsonContent] = useState<MCPConfig>({
 		mcpServers: {}
 	})
 	const [uploadStatus, setUploadStatus] = useState<
 		"idle" | "success" | "error"
 	>("idle")
-	const [isInstructionsOpen, setIsInstructionsOpen] = useState(true)
+	const [isInstructionsOpen, setIsInstructionsOpen] = useState(false)
+	const [isLoading, setIsLoading] = useState(true)
+
+	// Check for config file on component mount
+	useEffect(() => {
+		const loadConfig = async () => {
+			console.log("Starting loadConfig...")
+			try {
+				const config = await checkForConfigFile()
+				console.log("Config loaded:", config)
+
+				if (config && validateServerConfig(config)) {
+					console.log("Config is valid, setting state...")
+					setJsonContent(config)
+					setUploadStatus("success")
+					setIsInstructionsOpen(false)
+					console.log("State updated")
+				} else {
+					console.log(
+						"Config is invalid or missing, showing instructions"
+					)
+					setIsInstructionsOpen(true)
+				}
+			} catch (err) {
+				console.error("Error loading config:", err)
+				setIsInstructionsOpen(true)
+			} finally {
+				console.log("Setting loading to false")
+				setIsLoading(false)
+			}
+		}
+		loadConfig()
+	}, [])
+
+	useEffect(() => {
+		console.log("Current state:", {
+			jsonContent,
+			uploadStatus,
+			isInstructionsOpen,
+			isLoading,
+			serverCount: Object.keys(jsonContent.mcpServers).length
+		})
+	}, [jsonContent, uploadStatus, isInstructionsOpen, isLoading])
 
 	const handleJsonInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		try {
 			const content = JSON.parse(e.target.value)
-			setJsonContent(content)
-			setUploadStatus("success")
-			setIsInstructionsOpen(false) // Close accordion on successful upload
+			if (validateServerConfig(content)) {
+				setJsonContent(content)
+				setUploadStatus("success")
+				setIsInstructionsOpen(false)
+			} else {
+				throw new Error("Invalid server configuration")
+			}
 		} catch (error) {
 			console.error("Error parsing JSON:", error)
 			setUploadStatus("error")
@@ -32,12 +78,17 @@ function App() {
 	}
 
 	const handleServerAdd = (serverType: keyof typeof SERVER_CONFIGS) => {
+		console.log("Adding server:", serverType)
 		const serverConfig = SERVER_CONFIGS[serverType]
 
-		// Ensure we only add servers with required properties
+		if (!serverConfig.command || !serverConfig.args) {
+			console.error("Invalid server configuration")
+			return
+		}
+
 		const newServer = {
-			command: serverConfig.command as string,
-			args: serverConfig.args as string[],
+			command: serverConfig.command,
+			args: serverConfig.args,
 			...(serverConfig.env && { env: serverConfig.env })
 		}
 
@@ -51,7 +102,7 @@ function App() {
 	}
 
 	const handleServerRemove = (serverType: string) => {
-		// Remove from mcpServers if present
+		console.log("Removing server:", serverType)
 		if (jsonContent.mcpServers[serverType]) {
 			const { [serverType]: _, ...rest } = jsonContent.mcpServers
 			setJsonContent({
@@ -60,6 +111,23 @@ function App() {
 			})
 		}
 	}
+
+	if (isLoading) {
+		return (
+			<div className="flex justify-center items-center h-screen">
+				<span className="text-lg">Loading configuration...</span>
+			</div>
+		)
+	}
+
+	// Debug render conditions
+	console.log("Render conditions:", {
+		hasServers: Object.keys(jsonContent.mcpServers).length > 0,
+		uploadStatus,
+		shouldShowServers:
+			Object.keys(jsonContent.mcpServers).length > 0 &&
+			uploadStatus === "success"
+	})
 
 	return (
 		<main className="max-h-screen p-16">
@@ -123,39 +191,28 @@ function App() {
 				</div>
 
 				<div className="space-y-6">
-					<LoadingInstructions
-						isOpen={isInstructionsOpen}
-						onOpenChange={setIsInstructionsOpen}
-						onJsonInput={handleJsonInput}
-						uploadStatus={uploadStatus}
-					/>
+					{isInstructionsOpen && (
+						<LoadingInstructions
+							isOpen={isInstructionsOpen}
+							onOpenChange={setIsInstructionsOpen}
+							onJsonInput={handleJsonInput}
+							uploadStatus={uploadStatus}
+						/>
+					)}
 
-					{Object.keys(jsonContent).length > 0 &&
+					{Object.keys(jsonContent.mcpServers).length > 0 &&
 						uploadStatus === "success" && (
 							<div className="space-y-6">
 								<MCPServers
-									jsonContent={{
-										mcpServers:
-											jsonContent.mcpServers as Record<
-												string,
-												{
-													command: string
-													args: string[]
-													env?: Record<string, string>
-												}
-											>
-									}}
+									jsonContent={jsonContent}
 									onUpdate={setJsonContent}
 									onServerAdd={handleServerAdd}
 									onServerRemove={handleServerRemove}
 								/>
 
-								{Object.keys(jsonContent.mcpServers).length >
-									0 && (
-									<ApplyingInstructions
-										jsonContent={jsonContent}
-									/>
-								)}
+								<ApplyingInstructions
+									jsonContent={jsonContent}
+								/>
 							</div>
 						)}
 				</div>
