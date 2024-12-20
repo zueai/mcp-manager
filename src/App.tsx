@@ -135,7 +135,7 @@ function App() {
 				<div className="flex justify-center items-center gap-8 mb-16">
 					<div className="flex items-center justify-center rounded-2xl h-16 p-8 border-2 border-black/20">
 						<img
-							src="/mcp-logo.svg"
+							src="./mcp-logo.svg"
 							alt="MCP Manager"
 							className="h-8"
 						/>
@@ -143,7 +143,7 @@ function App() {
 
 					<div className="flex items-center justify-center rounded-2xl p-8 h-16 border-2 border-primary/30">
 						<img
-							src="/claude-logo.svg"
+							src="./claude-logo.svg"
 							alt="Claude"
 							className="h-6"
 						/>
@@ -183,10 +183,10 @@ function App() {
 						to learn more.
 						<br />
 						<br />
-						This is a simple, web-based GUI to help you install and
-						manage MCP servers in your Claude App. <br />
-						This runs client-side in your browser so your data will
-						never leave your computer.
+						This is a simple GUI to help you install and manage MCP
+						servers in your Claude App. <br />
+						This runs client-side on your machine only, so your data
+						will never leave your computer.
 					</span>
 				</div>
 
@@ -220,7 +220,7 @@ function App() {
 					<a href="https://zue.ai" target="_blank" rel="noreferrer">
 						<div className="flex items-center justify-center rounded-2xl p-10 h-16 border-2 border-black/10 hover:bg-primary/20 transition-all ease-in-out duration-300 shadow-md hover:shadow-lg">
 							<img
-								src="/logo_zue.svg"
+								src="./logo_zue.svg"
 								alt="zue.ai"
 								className="h-8"
 							/>

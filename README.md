@@ -1,6 +1,6 @@
 <h1 align="center">MCP Manager for Claude Desktop</h1>
 
-<p align="center">A simple web GUI to manage Model Context Protocol (MCP) servers for the Claude Desktop app on MacOS easily. Just follow the instructions and paste a few commands to give your Claude app instant superpowers. </p>
+<p align="center">A desktop application to manage Model Context Protocol (MCP) servers for the Claude Desktop app on MacOS. Just follow the instructions and paste a few commands to give your Claude app instant superpowers.</p>
 
 ![MCP Manager for Claude Desktop](https://assets.zue.ai/mcp-manager-hero.png)
 
@@ -13,8 +13,8 @@ The Model Context Protocol (MCP) enables Claude to access private data, APIs, an
 
 ## Features
 
-- 🚀 Easy-to-use interface for managing MCP servers
-- 🔒 Runs entirely client-side - your data never leaves your computer
+- 🚀 Easy-to-use desktop interface for managing MCP servers
+- 🔒 Runs locally - your data never leaves your computer
 - ⚡️ Quick setup for popular MCP servers:
   - Apple Notes - Access and search your Apple Notes
   - AWS Knowledge Base - Access and query AWS Knowledge Base for information retrieval
@@ -43,14 +43,21 @@ The Model Context Protocol (MCP) enables Claude to access private data, APIs, an
 
 ## Tech Stack
 
-- **Frontend Framework**: React 18 with TypeScript
-- **Build Tool**: Vite
-- **Styling**:
-  - TailwindCSS for utility-first CSS
-  - DaisyUI for component styling
-  - Tiempos Font to match the Anthropic Design Language
+- **Desktop Framework**: 
+  - Electron 29.1.4 with React 18.3.1
+  - TypeScript 5.6.2
+- **Build Tool**: 
+  - Vite 6.0.1
+  - Electron Builder 25.1.8
+- **UI Components**:
+  - TailwindCSS 3.4.16
+  - DaisyUI 4.12.14
+  - Lucide React 0.468.0 for icons
+  - Tiempos Font
+- **Code Quality**:
+  - Biome 1.9.4
+  - ESLint 9.15.0
 - **Package Manager**: Bun
-- **Deployment**: Cloudflare Pages for <60s build times
 
 ## Project Structure
 
@@ -63,32 +70,46 @@ src/
 ├── App.tsx # Main application component
 ├── server-configs.ts # MCP server configurations
 └── utils.ts # Utility functions
+electron/
+├── main.ts # Electron main process
+└── tsconfig.json # TypeScript config for Electron
 ```
 
 ## Development
 
 1. Install dependencies:
-
    ```bash
    bun install
    ```
 
-2. Start the dev server:
-
+2. Start development:
    ```bash
-   bun dev
+   bun electron:dev
    ```
 
-3. Build for production:
-
+3. Build for MacOS:
    ```bash
-   bun run build
+   bun electron:build # Creates .dmg installer
    ```
+
+4. Additional commands:
+   ```bash
+   bun check # Run TypeScript checks and Biome formatting
+   bun lint # Run ESLint
+   ```
+
+## Known Issues
+
+Currently working on implementing:
+- Fetch functionality
+- Time-related features
+- Sentry integration
+
+Contributions to resolve these are welcome!
 
 ## Contributing
 
 Contributions are extremely welcome! Please open a PR with new MCP servers or any other improvements to the codebase.
-PS. I wasnt able to get fetch, time, and sentry working, if you can help me out, that would be great!
 
 ## Disclaimer
 
