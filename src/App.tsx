@@ -229,16 +229,28 @@ function App() {
 				</div>
 				<div className="flex justify-center my-8 flex-col">
 					<span className="text-md text-center">
-						Made with ❤️ by zue. You can view the{" "}
+						Made with ❤️ by zue and some incredible{" "}
+						<a
+							href="https://github.com/zueai/mcp-manager/graphs/contributors"
+							className="link"
+							target="_blank"
+							rel="noreferrer"
+						>
+							contributors
+						</a>
+						.
+						<br />
+						You can view the source code on{" "}
 						<a
 							href="https://github.com/zueai/mcp-manager"
 							className="link"
 							target="_blank"
 							rel="noreferrer"
 						>
-							source code on GitHub
+							GitHub
 						</a>
 						.
+						<br />
 						<br />
 						<a
 							href="https://zue.ai/talk-to-us"
