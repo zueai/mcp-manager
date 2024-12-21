@@ -89,6 +89,7 @@ electron/
 
 3. Build for MacOS:
    ```bash
+   rm -rf dist dist-electron # When rebuilding
    bun electron:build # Creates .dmg installer
    ```
 
