@@ -1,7 +1,7 @@
 {
 	"name": "mcp-manager",
 	"private": true,
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"main": "./dist-electron/main.js",
 	"scripts": {
 		"dev": "bun check && vite --port 7777",
