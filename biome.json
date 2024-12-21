@@ -1,6 +1,12 @@
 {
 	"files": {
-		"ignore": ["dist/**/*", "node_modules/**/*", "public/**/*", "**/*.css"]
+		"ignore": [
+			"dist/**/*",
+			"node_modules/**/*",
+			"public/**/*",
+			"**/*.css",
+			".github/**/*"
+		]
 	},
 	"linter": {
 		"enabled": true,
@@ -14,7 +20,7 @@
 				"noCommaOperator": "off"
 			}
 		},
-		"ignore": ["**/*.md", "**/*.css"]
+		"ignore": ["**/*.md", "**/*.css", ".github/**/*"]
 	},
 	"formatter": {
 		"enabled": true,
