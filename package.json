@@ -10,7 +10,9 @@
 		"preview": "vite preview",
 		"check": "tsc --noEmit && biome check --write .",
 		"electron:dev": "tsc -p electron/tsconfig.json && vite",
-		"electron:build": "vite build && tsc -p electron/tsconfig.json && electron-builder --mac"
+		"electron:build": "vite build && tsc -p electron/tsconfig.json && electron-builder --mac",
+		"app:dir": "electron-builder --dir",
+		"app:dist": "electron-builder"
 	},
 	"dependencies": {
 		"lucide-react": "^0.468.0",
