@@ -78,9 +78,9 @@ export function ApplyingInstructions({
 			// Use the child_process module through window.electron
 			const result = await window.electron.executeCommand(command)
 
-			if (result.error) {
+			if (!result.success) {
 				setAutoApplyStatus("error")
-				setErrorMessage(result.error)
+				setErrorMessage(result.output)
 			} else {
 				setAutoApplyStatus("success")
 			}

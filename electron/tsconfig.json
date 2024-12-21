@@ -1,12 +1,10 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "composite": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "types": ["electron", "node"]
-  },
-  "include": [
-    "."
-  ]
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"module": "CommonJS",
+		"moduleResolution": "node",
+		"types": ["electron", "node"]
+	},
+	"include": ["."]
 }

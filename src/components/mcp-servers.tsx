@@ -2,6 +2,7 @@ import { MCPServerCard } from "@/components/mcp-server-card"
 import { SERVER_CONFIGS } from "@/server-configs"
 import { capitalizeFirstLetter } from "@/utils"
 import { Plus } from "lucide-react"
+import { useState } from "react"
 
 type MCPServer = {
 	command: string
@@ -30,10 +31,9 @@ export function MCPServers({
 	onServerAdd,
 	onServerRemove
 }: MCPServersProps) {
-	console.log("MCPServers component received props:", {
-		servers: jsonContent.mcpServers,
-		serverCount: Object.keys(jsonContent.mcpServers).length
-	})
+	const [customJson, setCustomJson] = useState("")
+	const [customServerName, setCustomServerName] = useState("")
+	const [jsonError, setJsonError] = useState("")
 
 	const handleServerUpdate = (name: string, newConfig: MCPServer) => {
 		console.log("Updating server:", name, newConfig)
@@ -52,36 +52,92 @@ export function MCPServers({
 		onServerRemove(name)
 	}
 
+	const handleCustomServerAdd = () => {
+		if (!customServerName.trim()) {
+			setJsonError("Please enter a server name")
+			return
+		}
+
+		try {
+			const parsedConfig = JSON.parse(customJson)
+			if (!parsedConfig.command || !Array.isArray(parsedConfig.args)) {
+				setJsonError(
+					"Invalid server configuration. Must include 'command' and 'args' fields"
+				)
+				return
+			}
+
+			const updatedContent = {
+				...jsonContent,
+				mcpServers: {
+					...jsonContent.mcpServers,
+					[customServerName]: parsedConfig
+				}
+			}
+			onUpdate(updatedContent)
+
+			// Reset form and close modal
+			setCustomJson("")
+			setCustomServerName("")
+			setJsonError("")
+			const modal = document.getElementById(
+				"add_custom_server_modal"
+			) as HTMLDialogElement
+			if (modal) {
+				modal.close()
+			}
+		} catch (error) {
+			setJsonError("Invalid JSON format")
+		}
+	}
+
 	const hasServers = Object.keys(jsonContent.mcpServers).length > 0
-	console.log("Has servers:", hasServers)
 
 	return (
 		<div className="space-y-4 my-32">
 			<div className="flex justify-between items-center mb-8">
 				<div className="flex items-center gap-4">
 					<h2 className="text-2xl text-center">Your MCP Servers</h2>
-					<button
-						type="button"
-						className="btn btn-primary btn-sm"
-						onClick={() => {
-							const modal = document.getElementById(
-								"add_server_modal"
-							) as HTMLDialogElement
-							if (modal) {
-								modal.showModal()
-							}
-						}}
-					>
-						<Plus className="w-4 h-4" />
-						<span>Add Server</span>
-					</button>
+					<div className="flex gap-2">
+						<button
+							type="button"
+							className="btn btn-primary btn-sm"
+							onClick={() => {
+								const modal = document.getElementById(
+									"add_server_modal"
+								) as HTMLDialogElement
+								if (modal) {
+									modal.showModal()
+								}
+							}}
+						>
+							<Plus className="w-4 h-4" />
+							<span>Add Preset</span>
+						</button>
+						<button
+							type="button"
+							className="btn btn-secondary btn-sm"
+							onClick={() => {
+								const modal = document.getElementById(
+									"add_custom_server_modal"
+								) as HTMLDialogElement
+								if (modal) {
+									modal.showModal()
+								}
+							}}
+						>
+							<Plus className="w-4 h-4" />
+							<span>Add Custom</span>
+						</button>
+					</div>
 				</div>
 			</div>
 
+			{/* Preset Server Modal */}
 			<dialog id="add_server_modal" className="modal backdrop-blur-sm">
 				<div className="modal-box rounded-3xl">
 					<div className="flex justify-between items-center mb-4 sticky top-0 py-4 -mt-4 -mx-6 px-6">
-						<h3 className="text-xl ml-4">Add New Server</h3>
+						<h3 className="text-xl ml-4">Add Preset Server</h3>
 						<button
 							type="button"
 							className="btn btn-ghost btn-sm btn-circle"
@@ -139,6 +195,76 @@ export function MCPServers({
 				</div>
 			</dialog>
 
+			{/* Custom Server Modal */}
+			<dialog
+				id="add_custom_server_modal"
+				className="modal backdrop-blur-sm"
+			>
+				<div className="modal-box rounded-3xl">
+					<div className="flex justify-between items-center mb-4 sticky top-0 py-4 -mt-4 -mx-6 px-6">
+						<h3 className="text-xl ml-4">Add Custom Server</h3>
+						<button
+							type="button"
+							className="btn btn-ghost btn-sm btn-circle"
+							onClick={() => {
+								const modal = document.getElementById(
+									"add_custom_server_modal"
+								) as HTMLDialogElement
+								if (modal) {
+									modal.close()
+								}
+							}}
+						>
+							✕
+						</button>
+					</div>
+
+					<div className="grid gap-4 py-4 px-4">
+						<div className="form-control">
+							<label htmlFor="serverName" className="label">
+								<span className="label-text">Server Name</span>
+							</label>
+							<input
+								id="serverName"
+								type="text"
+								className="input input-bordered w-full"
+								value={customServerName}
+								onChange={(e) =>
+									setCustomServerName(e.target.value)
+								}
+								placeholder="Enter server name"
+							/>
+						</div>
+						<div className="form-control">
+							<label htmlFor="serverConfig" className="label">
+								<span className="label-text">
+									Server Configuration (JSON)
+								</span>
+							</label>
+							<textarea
+								id="serverConfig"
+								className="textarea textarea-bordered h-40 font-mono"
+								value={customJson}
+								onChange={(e) => setCustomJson(e.target.value)}
+								placeholder='{"command": "example", "args": ["arg1", "arg2"], "env": {"KEY": "value"}}'
+							/>
+						</div>
+						{jsonError && (
+							<div className="text-error text-sm">
+								{jsonError}
+							</div>
+						)}
+						<button
+							type="button"
+							className="btn btn-primary w-full"
+							onClick={handleCustomServerAdd}
+						>
+							Add Server
+						</button>
+					</div>
+				</div>
+			</dialog>
+
 			<div className="space-y-4">
 				{hasServers ? (
 					Object.entries(jsonContent.mcpServers).map(
@@ -164,7 +290,7 @@ export function MCPServers({
 				) : (
 					<p className="text-gray-500 text-center">
 						You currently have no MCP servers configured. Add one by
-						clicking the "Add Server" button.
+						clicking the "Add Preset" or "Add Custom" button.
 					</p>
 				)}
 			</div>

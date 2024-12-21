@@ -9,7 +9,8 @@
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"check": "tsc --noEmit && biome check --write .",
-		"electron:dev": "tsc -p electron/tsconfig.json && vite"
+		"electron:dev": "tsc -p electron/tsconfig.json && vite",
+		"electron:build": "vite build && tsc -p electron/tsconfig.json && electron-builder --mac"
 	},
 	"dependencies": {
 		"lucide-react": "^0.468.0",
@@ -27,7 +28,7 @@
 		"concurrently": "^8.2.2",
 		"daisyui": "^4.12.14",
 		"electron": "^29.1.4",
-		"electron-builder": "^24.13.3",
+		"electron-builder": "^25.1.8",
 		"eslint": "^9.15.0",
 		"eslint-plugin-react-hooks": "^5.0.0",
 		"eslint-plugin-react-refresh": "^0.4.14",
@@ -40,5 +41,14 @@
 		"vite-plugin-electron": "^0.28.3",
 		"vite-plugin-electron-renderer": "^0.14.5",
 		"wait-on": "^7.2.0"
+	},
+	"build": {
+		"appId": "com.mcp-manager",
+		"productName": "MCP Manager",
+		"files": ["dist/**/*", "dist-electron/**/*", "electron/**/*"],
+		"mac": {
+			"icon": "public/app.png",
+			"target": "dmg"
+		}
 	}
 }

@@ -7,7 +7,11 @@
 		"rules": {
 			"recommended": true,
 			"suspicious": {
-				"noArrayIndexKey": "off"
+				"noArrayIndexKey": "off",
+				"noAssignInExpressions": "off"
+			},
+			"style": {
+				"noCommaOperator": "off"
 			}
 		},
 		"ignore": ["**/*.md", "**/*.css"]

@@ -49,6 +49,19 @@ export default defineConfig({
 			"@": path.resolve(__dirname, "./src")
 		}
 	},
+	publicDir: "public",
+	base: process.env.ELECTRON_RENDERER_URL ? "/" : "./",
+	build: {
+		assetsDir: ".",
+		rollupOptions: {
+			output: {
+				assetFileNames: (assetInfo) => {
+					const name = assetInfo.name || ""
+					return name.endsWith(".svg") ? name : `assets/${name}`
+				}
+			}
+		}
+	},
 	server: {
 		port: 7777
 	}
