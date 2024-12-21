@@ -50,7 +50,16 @@
 		"files": ["dist/**/*", "dist-electron/**/*", "electron/**/*"],
 		"mac": {
 			"icon": "public/app.png",
-			"target": "dmg"
+			"target": [
+				{
+					"target": "dmg",
+					"arch": ["arm64"]
+				}
+			],
+			"artifactName": "${productName}-${version}-${arch}.${ext}"
+		},
+		"dmg": {
+			"sign": false
 		}
 	}
 }
