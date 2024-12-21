@@ -15,35 +15,17 @@ async function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1200,
 		height: 800,
+		fullscreen: true,
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
 			preload: path.join(__dirname, "preload.js"),
-			webSecurity: false // Allow loading local images
+			webSecurity: false
 		}
 	})
 
 	if (process.platform === "darwin") {
-		app.commandLine.appendSwitch("js-flags", "--max-old-space-size=4096")
-	}
-
-	const configPath = path.join(
-		os.homedir(),
-		"Library",
-		"Application Support",
-		"Claude",
-		"claude_desktop_config.json"
-	)
-	console.log("Config path:", configPath)
-	try {
-		const configExists = existsSync(configPath)
-		console.log("Config exists:", configExists)
-		if (configExists) {
-			const config = readFileSync(configPath, "utf8")
-			console.log("Config content:", config)
-		}
-	} catch (error) {
-		console.error("Error checking config:", error)
+		app.dock.show()
 	}
 
 	if (process.env.VITE_DEV_SERVER_URL) {
@@ -51,16 +33,6 @@ async function createWindow() {
 	} else {
 		mainWindow.loadFile("dist/index.html")
 	}
-
-	mainWindow.on("closed", () => {
-		mainWindow = null
-	})
-
-	mainWindow.on("hide", () => {
-		if (process.platform === "darwin") {
-			app.dock.hide()
-		}
-	})
 }
 
 app.whenReady().then(() => {
@@ -72,7 +44,7 @@ app.whenReady().then(() => {
 })
 
 app.on("activate", () => {
-	if (!mainWindow) {
+	if (mainWindow === null) {
 		createWindow()
 	}
 })
