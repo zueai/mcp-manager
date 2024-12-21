@@ -1,16 +1,18 @@
 {
 	"name": "mcp-manager",
 	"private": true,
-	"version": "0.0.0",
+	"version": "0.1.6",
 	"main": "./dist-electron/main.js",
 	"scripts": {
-		"dev": "bun check && vite --port 7777",
-		"build": "bun check && vite build",
+		"dev": "npm run check && vite --port 7777",
+		"build": "npm run check && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"check": "tsc --noEmit && biome check --write .",
 		"electron:dev": "tsc -p electron/tsconfig.json && vite",
-		"electron:build": "vite build && tsc -p electron/tsconfig.json && electron-builder --mac"
+		"electron:build": "vite build && tsc -p electron/tsconfig.json && electron-builder --mac",
+		"app:dir": "electron-builder --dir",
+		"app:dist": "electron-builder"
 	},
 	"dependencies": {
 		"lucide-react": "^0.468.0",
