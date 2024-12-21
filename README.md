@@ -99,12 +99,12 @@ electron/
    bun lint # Run ESLint
    ```
 
-## Known Issues
+## Work to be done
 
-Currently working on implementing:
-- Fetch functionality
-- Time-related features
-- Sentry integration
+Add preset MCPs:
+- Fetch 
+- Time-related 
+- Sentry 
 
 Contributions to resolve these are welcome!
 
