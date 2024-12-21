@@ -1,6 +1,12 @@
-name: Build/release
+name: Build mac app
 
-on: push
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - main
+      - test-build-action
 
 permissions: write-all
 
